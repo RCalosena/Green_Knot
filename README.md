@@ -3,6 +3,6 @@
  - (Descrição)
  - (Tecnologias Utilizadas)
  - (Estrutura do Projeto (Explicação da divisão de pastas))
- - (Protótipo)
+ - (Protótipo (Link do protótipo))
  - (Integrantes)
  - (Status do Projeto)
