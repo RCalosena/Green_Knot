@@ -5,5 +5,5 @@
  - (Estrutura do Projeto (Explicação da divisão de pastas))
  - Protótipo: https://ecogest.my.canva.site/fazer-login
  - Equipe:
-  - Enzo Marchi Romera, Giovanni Nicolas Tapia Rodriguez, Gustavo Antoniazzi Gouvea Santos, Matheus Oliveira Leite Nogueira, Édi Cézar Neves Filho
+     - Enzo Marchi Romera, Giovanni Nicolas Tapia Rodriguez, Gustavo Antoniazzi Gouvea Santos, Matheus Oliveira Leite Nogueira, Édi Cézar Neves Filho
  - Status do projeto: Em desenvolvimento
