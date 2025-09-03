@@ -6,7 +6,16 @@
 ### Tecnologías utilizadas:
 HTML, CSS, JavaScript
 
-### *(Estrutura do Projeto (Explicação da divisão de pastas))*
+### Estrutura do Projeto
+- O branch "main" contém a versão estável do projeto.
+- O branch "testar-pagina" é quase uma réplica do repositório "main", mas com o conteúdo da pasta /src na pasta original, e é lido pelo GitHub para gerar um site de teste para visualizar mudanças feitas no projeto.
+- "/assets" contém todos os elementos visuais do site (imagens, videos, etc.).
+- "/config" (nada)
+- "/database" (nada)
+- "/docs" contém documentos relacionados ao projeto que não formam parte do site.
+- "/scripts" (nada)
+- "/src" contém toda a programações fonte do site.
+- "/tests" contém protótipos, experimentos, e ideias para o site.
 
 ### Protótipo: 
 https://ecogest.my.canva.site/fazer-login
