@@ -1,0 +1,112 @@
+/* ============================================= */
+/* VARIÁVEIS DE CORES (Definidas para todo o site) */
+/* ============================================= */
+:root {
+    --cor-verde: #6aa84f;
+    --cor-texto-escuro: #333333;
+    --cor-fundo-claro: #ffffff;
+    --cor-borda-sutil: #eeeeee;
+}
+/* ============================================= */
+/* CABEÇALHO DA PÁGINA DE ROTAS                  */
+/* ============================================= */
+
+.header-rotas {
+    /* Fundo branco e bordas para separar do conteúdo */
+    background-color: #ffffff; 
+    border-top: 4px solid var(--cor-verde);
+    border-bottom: 1px solid var(--cor-borda-sutil);
+    padding: 15px 0; /* Espaçamento interno vertical */
+}
+
+/* Usamos um container invisível dentro do header para centralizar o conteúdo */
+.header-rotas .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    /* A Mágica do Alinhamento com Flexbox */
+    display: flex; 
+    justify-content: space-between; /* Joga um item para cada lado */
+    align-items: center; /* Alinha verticalmente no centro */
+}
+
+/* Estilo do Título/Logo "GreenKnot" */
+.header-rotas h1 {
+    margin: 0; /* Remove a margem padrão do h1 */
+    font-size: 1.5rem;
+    color: var(--cor-verde); /* Usa a cor verde que definimos */
+}
+
+/* Estilo do Link "Home" */
+.header-rotas a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: var(--cor-texto-escuro);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px; /* Borda levemente arredondada */
+    transition: background-color 0.2s; /* Efeito suave ao passar o mouse */
+}
+
+.header-rotas a:hover {
+    background-color: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+}
+
+/* ======================================================= */
+/* ESTILOS DO COMPONENTE DE ROTAS (.pagina-rotas)          */
+/* ======================================================= */
+
+/* Estilo para o título principal do componente */
+.pagina-rotas .titulo-rotas {
+    font-family: 'Poppins', sans-serif; /* Fonte profissional */
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 30px;
+}
+
+/* O container do formulário, com a aparência de "card" */
+.pagina-rotas .form-rotas {
+    max-width: 600px;
+    margin: 0 auto; /* Centraliza o formulário no espaço disponível */
+    padding: 30px;
+    background-color: var(--cor-fundo-claro);
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pagina-rotas .form-rotas label {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.pagina-rotas .form-rotas select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pagina-rotas .form-rotas button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: var(--cor-verde);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s; /* Efeito suave ao passar o mouse */
+}
+
+.pagina-rotas .form-rotas button:hover {
+    background-color: #5a943f; /* Tom de verde um pouco mais escuro */
+}
