@@ -1,5 +1,5 @@
-/* ============================================= */
-/* VARIÁVEIS DE CORES (Definidas para todo o site) */
+﻿/* ============================================= */
+/* VARIAVEIS DE CORES (Definidas para todo o site) */
 /* ============================================= */
 :root {
     --cor-verde: #6aa84f;
@@ -7,59 +7,117 @@
     --cor-fundo-claro: #ffffff;
     --cor-borda-sutil: #eeeeee;
 }
+
 /* ============================================= */
-/* CABEÇALHO DA PÁGINA DE ROTAS                  */
+/* CABECALHO DAS PAGINAS INTERNAS                */
 /* ============================================= */
 
-.header-rotas {
-    /* Fundo branco e bordas para separar do conteúdo */
-    background-color: #ffffff; 
+.header-rotas,
+.header-ajuda {
+    background-color: #ffffff;
     border-top: 4px solid var(--cor-verde);
     border-bottom: 1px solid var(--cor-borda-sutil);
-    padding: 15px 0; /* Espaçamento interno vertical */
+    font-family: 'Poppins', sans-serif;
+    padding: 15px 0;
 }
 
-/* Usamos um container invisível dentro do header para centralizar o conteúdo */
-.header-rotas .container {
+.header-rotas .container,
+.header-ajuda .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-
-    /* A Mágica do Alinhamento com Flexbox */
-    display: flex; 
-    justify-content: space-between; /* Joga um item para cada lado */
-    align-items: center; /* Alinha verticalmente no centro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Estilo do Título/Logo "GreenKnot" */
-.header-rotas h1 {
-    margin: 0; /* Remove a margem padrão do h1 */
+.header-rotas h1,
+.header-ajuda h1 {
+    margin: 0;
     font-size: 1.5rem;
-    color: var(--cor-verde); /* Usa a cor verde que definimos */
+    color: var(--cor-verde);
 }
 
-/* Estilo do Link "Home" */
-.header-rotas a {
-    text-decoration: none; /* Remove o sublinhado */
+.header-rotas a,
+.header-ajuda a {
+    text-decoration: none;
     color: var(--cor-texto-escuro);
     font-weight: bold;
     font-size: 1rem;
     padding: 8px 16px;
-    border-radius: 20px; /* Borda levemente arredondada */
-    transition: background-color 0.2s; /* Efeito suave ao passar o mouse */
+    border-radius: 20px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-.header-rotas a:hover {
-    background-color: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+.header-rotas a:hover,
+.header-ajuda a:hover {
+    background-color: #f0f0f0;
 }
 
-/* ======================================================= */
-/* ESTILOS DO COMPONENTE DE ROTAS (.pagina-rotas)          */
-/* ======================================================= */
+.header-rotas a[aria-current="page"],
+.header-ajuda a[aria-current="page"] {
+    background-color: var(--cor-verde);
+    color: #ffffff;
+}
 
-/* Estilo para o título principal do componente */
+/* Menu da pagina de ajuda */
+.menu-ajuda {
+    display: flex;
+}
+
+.menu-ajuda__lista {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-ajuda__item {
+    position: relative;
+}
+
+.menu-ajuda__item > a {
+    display: inline-block;
+}
+
+.menu-ajuda__submenu {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: var(--cor-fundo-claro);
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: none;
+    z-index: 10;
+}
+
+.menu-ajuda__submenu li a {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 0;
+}
+
+.menu-ajuda__submenu li a:hover {
+    background-color: #f7f7f7;
+}
+
+.menu-ajuda__item--submenu:hover > .menu-ajuda__submenu,
+.menu-ajuda__item--submenu:focus-within > .menu-ajuda__submenu {
+    display: block;
+}
+
+/* ============================================= */
+/* ESTILOS DO COMPONENTE DE ROTAS (.pagina-rotas) */
+/* ============================================= */
+
 .pagina-rotas .titulo-rotas {
-    font-family: 'Poppins', sans-serif; /* Fonte profissional */
+    font-family: 'Poppins', sans-serif;
     font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
@@ -67,10 +125,9 @@
     margin-bottom: 30px;
 }
 
-/* O container do formulário, com a aparência de "card" */
 .pagina-rotas .form-rotas {
     max-width: 600px;
-    margin: 0 auto; /* Centraliza o formulário no espaço disponível */
+    margin: 0 auto;
     padding: 30px;
     background-color: var(--cor-fundo-claro);
     border: 1px solid var(--cor-borda-sutil);
@@ -104,9 +161,144 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s; /* Efeito suave ao passar o mouse */
+    transition: background-color 0.2s;
 }
 
 .pagina-rotas .form-rotas button:hover {
-    background-color: #5a943f; /* Tom de verde um pouco mais escuro */
+    background-color: #5a943f;
+}
+
+/* ============================================= */
+/* ESTILOS DA PAGINA DE AJUDA                    */
+/* ============================================= */
+
+.pagina-ajuda {
+    background-color: #f6f6f6;
+    font-family: 'Poppins', sans-serif;
+    color: var(--cor-texto-escuro);
+}
+
+.pagina-ajuda .conteudo-ajuda {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+}
+
+.pagina-ajuda .titulo-ajuda {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pagina-ajuda .grid-ajuda {
+    display: grid;
+    gap: 24px;
+}
+
+.cartao-ajuda {
+    background-color: var(--cor-fundo-claro);
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cartao-ajuda h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.cartao-ajuda p,
+.cartao-ajuda li,
+.cartao-ajuda summary,
+.cartao-ajuda a {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.lista-ajuda {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.lista-ajuda li {
+    padding-left: 0;
+}
+
+.lista-ajuda strong {
+    font-weight: 700;
+    color: var(--cor-texto-escuro);
+}
+
+.pagina-ajuda details {
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fafafa;
+}
+
+.pagina-ajuda details + details {
+    margin-top: 12px;
+}
+
+.pagina-ajuda summary {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pagina-ajuda summary::-webkit-details-marker {
+    display: none;
+}
+
+.pagina-ajuda summary::after {
+    content: '+';
+    float: right;
+    transition: transform 0.2s;
+}
+
+.pagina-ajuda details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.pagina-ajuda footer,
+.footer-ajuda {
+    text-align: center;
+    padding: 20px 0 40px;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* ============================================= */
+/* RESPONSIVIDADE                                */
+/* ============================================= */
+
+@media (min-width: 768px) {
+    .pagina-ajuda .grid-ajuda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .header-ajuda .container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .menu-ajuda__lista {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .menu-ajuda__submenu {
+        position: static;
+        box-shadow: none;
+        border: 1px solid var(--cor-borda-sutil);
+        margin-top: 8px;
+    }
 }
