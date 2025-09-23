@@ -13,7 +13,8 @@
 /* ============================================= */
 
 .header-rotas,
-.header-ajuda {
+.header-ajuda,
+.header-index {
     background-color: #ffffff;
     border-top: 4px solid var(--cor-verde);
     border-bottom: 1px solid var(--cor-borda-sutil);
@@ -22,7 +23,8 @@
 }
 
 .header-rotas .container,
-.header-ajuda .container {
+.header-ajuda .container,
+.header-index .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
@@ -32,14 +34,16 @@
 }
 
 .header-rotas h1,
-.header-ajuda h1 {
+.header-ajuda h1,
+.header-index h1 {
     margin: 0;
     font-size: 1.5rem;
     color: var(--cor-verde);
 }
 
 .header-rotas a,
-.header-ajuda a {
+.header-ajuda a,
+.header-index a {
     text-decoration: none;
     color: var(--cor-texto-escuro);
     font-weight: bold;
@@ -50,17 +54,19 @@
 }
 
 .header-rotas a:hover,
-.header-ajuda a:hover {
+.header-ajuda a:hover,
+.header-index a:hover {
     background-color: #f0f0f0;
 }
 
 .header-rotas a[aria-current="page"],
-.header-ajuda a[aria-current="page"] {
+.header-ajuda a[aria-current="page"],
+.header-index a[aria-current="page"] {
     background-color: var(--cor-verde);
     color: #ffffff;
 }
 
-/* Menu da pagina de ajuda */
+/* Menu da pagina de ajuda & index */
 .menu-ajuda {
     display: flex;
 }
@@ -110,6 +116,92 @@
 .menu-ajuda__item--submenu:hover > .menu-ajuda__submenu,
 .menu-ajuda__item--submenu:focus-within > .menu-ajuda__submenu {
     display: block;
+}
+
+/* ========================= */
+/* ESTILOS DO MENU PRINCIPAL */
+/* ========================= */
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.cartao-index {
+    background-color: var(--cor-verde);
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 40px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cartao-index p,
+.cartao-index li,
+.cartao-index a {
+    color: var(--cor-fundo-claro);
+    font-size: 1.5rem;
+}
+
+.cartao-index h3 {
+    color: var(--cor-fundo-claro);
+    font-size: 2.5rem;
+}
+
+.cartao2-index {
+    background-color: #eea84b;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 40px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cartao2-index p,
+.cartao2-index li,
+.cartao2-index a {
+    color: var(--cor-fundo-claro);
+    font-size: 1.5rem;
+}
+
+.cartao2-index h3 {
+    color: var(--cor-fundo-claro);
+    font-size: 2.5rem;
+}
+
+.cartao3-index {
+    background-color: #666666;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 40px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cartao3-index p,
+.cartao3-index li,
+.cartao3-index a {
+    color: var(--cor-fundo-claro);
+    font-size: 1.5rem;
+}
+
+.cartao3-index h3 {
+    color: var(--cor-fundo-claro);
+    font-size: 2.5rem;
+}
+
+.pagina-index .conteudo-index {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+}
+
+.pagina-index .titulo-index {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pagina-index .grid-index {
+    display: grid;
+    gap: 24px;
 }
 
 /* ============================================= */

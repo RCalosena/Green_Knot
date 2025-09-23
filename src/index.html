@@ -10,41 +10,68 @@
         <link rel="stylesheet" href="style.css">
 
     </head>
-    <body> 
+    <body class="pagina-index"> 
 
-        <h1>Green Knot</h1>
-        <h2>Barra de Navegação</h2>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Serviços</a>
-                <ul>
-                    <li><a href="rotas.html">Rotas e horarios de coleta</a></li>
-                    <li><a href="beneficios.html">Benefícios do manejo <br>estratégico das rotas</a></li>
-                </ul>
-            </li>
-            <li><a href="reclamações.html">Central de Reclamações</a></li>
-            <li><a href="ajuda.html">Ajuda</a></li>
-            <li><a href="login/login%20usuario.html">Fazer Login</a></li>
+    <header class="header-index">
+    <div class="container">
+      <h1>Green Knot</h1>
+      <nav class="menu-principal">
+        <ul class="menu-ajuda__lista">
+          <li class="menu-ajuda__item"><a href="index.html" aria-current="page">Home</a></li>
+          <li class="menu-ajuda__item menu-ajuda__item--submenu">
+            <a href="#">Serviços</a>
+            <ul class="menu-ajuda__submenu">
+              <li><a href="rotas.html">Rotas e horários de coleta</a></li>
+              <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
+            </ul>
+          </li>
+          <li class="menu-ajuda__item"><a href="reclamações.html">Central de Reclamações</a></li>
+          <li class="menu-ajuda__item"><a href="ajuda.html">Ajuda</a></li>
+          <li class="menu-ajuda__item"><a href="login/login%20usuario.html">Fazer Login</a></li>
         </ul>
-        <h2>Conteúdo</h2>
-        <ul>
-            <li>A Green Knot é uma empresa qualifica para
-                <br>tratar com a gestão de resíduos urbanos
-                <br>de forma inteligente e eficiente. Clique
-                <br>abaixo para saber mais sobre a empresa: 
-                <p><a href="saibamais.html">Saiba Mais</a></p></li>
-            <li>A Green Knot oferece visibilidade das rotas
-                <br>dos caminhões de lixo, permitindo que
-                <br>os usuários se preparem para a coleta. 
-                <br>Clique abaixo para consultar os horários 
-                <br>de coleta no seu bairro:
-                <p><a href="rotas.html">Clique aqui</a></p></li>
-            <li>A Green Knot atua em cidades como Jundiá,
-                <br>Cabreúva, Louveira, entre outras. Clique
-                <br>no botão abaixo se quiser conferir todos
-                <br>os locais em que a Green Knot está presente:
-                <p><a href="">Clique aqui</a></p></li>
-        </ul>
+      </nav>
+    </div>
+  </header>
+    
+    <main class="conteudo-index">
+    <h2 class="titulo-index">Bem-vindo à Green Knot</h2>
+
+    <div class="grid-index">
+      <section class="cartao-index">
+        <h3>Sobre a Green Knot</h3>
+        <p>
+          A Green Knot é uma empresa qualifica para
+          tratar com a gestão de resíduos urbanos
+          de forma inteligente e eficiente. Clique
+          abaixo para saber mais sobre a empresa:
+        </p>
+        <p><a href="saibamais.html">Saiba Mais</a></p>
+      </section>
+
+      <section class="cartao2-index">
+        <h3>Rotas de Coleta</h3>
+        <p>
+          A Green Knot oferece visibilidade das rotas
+          dos caminhões de lixo, permitindo que
+          os usuários se preparem para a coleta.
+          Clique abaixo para consultar os horários
+          de coleta no seu bairro:
+        </p>
+        <p><a href="rotas.html">Clique Aqui</a></p>
+      </section>
+
+      <section class="cartao3-index">
+        <h3>Cidades Atendidas</h3>
+        <p>
+          A Green Knot atua em cidades como Jundiá,
+          Cabreúva, Louveira, entre outras. Clique
+          no botão abaixo se quiser conferir todos
+          os locais em que a Green Knot está presente:
+        </p>
+        <p><a href="">Clique Aqui</a></p>
+      </section>
+    </div>
+  </main>
 
     </body>
 </html>
