@@ -1,84 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Ajuda - GreenKnot</title>
-    <meta name="description" content="Precisa de ajuda para usar o site GreenKnot? Veja como consultar rotas, registrar reclamações e acessar sua conta.">
+    <title>Ajuda - Green Knot</title>
+    <meta name="description" content="Precisa de ajuda para usar o site Green Knot? Veja como consultar rotas, registrar reclamações e acessar sua conta.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-  </head>
-  <body>
-    <header>
-      <h1>GreenKnot</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="https://ecogest.my.canva.site/fazer-login/#servi%C3%A7os-sem-login">Serviços</a>
-            <ul>
-              <li><a href="rotas.html">Rotas e horários de coleta</a></li>
-              <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
-            </ul>
-          </li>
-          <li><a href="reclama%C3%A7%C3%B5es.html">Central de Reclamações</a></li>
-          <li><a aria-current="page">Ajuda</a></li>
-          <li><a href="login/login%20usuario.html">Fazer Login</a></li>
-        </ul>
-      </nav>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Green Knot</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Serviços</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="rotas.html">Rotas e horários de coleta</a></li>
+                            <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="reclamacoes.html">Central de Reclamações</a></li>
+                    <li><a href="ajuda.html">Ajuda</a></li>
+                    <li><a href="login/loginusuario.html" class="nav-button">Fazer Login</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-      <h2>Ajuda</h2>
+    <main class="container page-content">
+        <h2 class="page-title">Central de Ajuda</h2>
 
-      <section>
-        <h3>Como usar o site</h3>
-        <ul>
-          <li><strong>Consultar rotas:</strong> acesse <a href="rotas.html">Rotas e horários de coleta</a> para ver quando o caminhão passa no seu bairro.</li>
-          <li><strong>Benefícios do manejo:</strong> entenda por que otimizar rotas ajuda a cidade em <a href="beneficios.html">Benefícios</a>.</li>
-          <li><strong>Fazer uma reclamação:</strong> use a <a href="reclama%C3%A7%C3%B5es.html">Central de Reclamações</a> para reportar atrasos, faltas ou outros problemas.</li>
-          <li><strong>Login:</strong> entre em <a href="login/login%20usuario.html">Fazer Login</a> para acessar recursos personalizados.</li>
-        </ul>
-      </section>
+        <div class="content-card">
+            <section class="content-section">
+                <h3>Como usar o site</h3>
+                <ul>
+                    <li><strong>Consultar rotas:</strong> acesse <a href="rotas.html">Rotas e horários</a> para ver quando o caminhão passa no seu bairro.</li>
+                    <li><strong>Fazer uma reclamação:</strong> use a <a href="reclamacoes.html">Central de Reclamações</a> para reportar problemas.</li>
+                    <li><strong>Login:</strong> entre em <a href="login/loginusuario.html">Fazer Login</a> para acessar recursos personalizados.</li>
+                </ul>
+            </section>
+            
+            <section class="content-section">
+                <h3>Perguntas Frequentes (FAQ)</h3>
+                <div class="faq-list">
+                    <details>
+                        <summary>Preciso de conta para ver as rotas?</summary>
+                        <p>Não. A consulta de rotas e horários está disponível para todos, sem a necessidade de login.</p>
+                    </details>
+                    <details>
+                        <summary>Minhas rotas não aparecem. O que fazer?</summary>
+                        <p>Atualize a página e verifique sua conexão. Se o problema persistir, entre em contato com o suporte informando seu bairro e cidade.</p>
+                    </details>
+                    <details>
+                        <summary>Esqueci minha senha. Como recuperar?</summary>
+                        <p>Na página de login, utilize a opção “Esqueci minha senha” para seguir os passos de redefinição de acesso.</p>
+                    </details>
+                </div>
+            </section>
 
-      <section>
-        <h3>Perguntas frequentes (FAQ)</h3>
-        <details>
-          <summary>Preciso de conta para ver as rotas?</summary>
-          <p>Não. A consulta de rotas e horários está disponível sem login.</p>
-        </details>
-        <details>
-          <summary>Como registro uma reclamação?</summary>
-          <p>Acesse a <a href="reclama%C3%A7%C3%B5es.html">Central de Reclamações</a>, preencha os campos obrigatórios e envie. Você receberá um número de protocolo.</p>
-        </details>
-        <details>
-          <summary>Minhas rotas não aparecem. O que fazer?</summary>
-          <p>Atualize a página e verifique sua conexão. Se persistir, entre em contato pelo suporte abaixo informando seu bairro e cidade.</p>
-        </details>
-        <details>
-          <summary>Esqueci minha senha. Como recuperar?</summary>
-          <p>Na página de login, use a opção “Esqueci minha senha” para redefinir o acesso.</p>
-        </details>
-      </section>
-
-      <section>
-        <h3>Suporte</h3>
-        <p>
-          Dúvidas ou problemas? Fale com a nossa equipe de suporte:<br>
-          E-mail: <a href="mailto:suporte@greenknot.com">suporte@greenknot.com</a>
-        </p>
-      </section>
-
-      <section>
-        <h3>Acessibilidade</h3>
-        <ul>
-          <li>Use a combinação de teclas do navegador para ampliar o texto (Ctrl + + / Ctrl + -).</li>
-          <li>Todos os links são navegáveis por teclado (Tab/Shift+Tab).</li>
-        </ul>
-      </section>
+            <section class="content-section">
+                <h3>Suporte</h3>
+                <p>Ainda com dúvidas ou problemas? Fale com a nossa equipe.<br>
+                    E-mail: <a href="mailto:suporte@greenknot.com">suporte@greenknot.com</a>
+                </p>
+            </section>
+        </div>
     </main>
 
-    <footer>
-      <small>GreenKnot — Ajuda</small>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
+        </div>
     </footer>
-  </body>
-  </html>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajuda - Green Knot Gestor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body id="pagina-ajuda-gestor">
+
+    <div class="dashboard-layout">
+        <header class="dash-header">
+            <div class="container">
+                <a href="../index.html" class="logo">Green Knot</a>
+                <div class="user-profile">
+                    <span id="nome-gestor">Bem-vindo, Gestor!</span> 
+                    <a href="#" id="btn-logout">Sair</a>
+                </div>
+            </div>
+        </header>
+
+        <aside class="dash-sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Visão Geral</a></li>
+                    <li><a href="gerenciar-rotas.html">Gerenciar Rotas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="reclamacoes-gestor.html">Reclamações</a></li>
+                    <li class="active"><a href="ajuda-gestor.html">Ajuda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dash-content">
+            <h2 class="page-title">Central de Ajuda do Gestor</h2>
+            <p class="page-subtitle">Tire suas dúvidas sobre o gerenciamento da plataforma Green Knot.</p>
+
+            <div class="content-card">
+                <section class="content-section">
+                    <h3>Perguntas Frequentes (FAQ)</h3>
+                    <div class="faq-list">
+                        <details>
+                            <summary>Como eu cadastro uma nova rota de coleta?</summary>
+                            <p>Vá para a seção "Gerenciar Rotas" no menu lateral. Preencha os campos do formulário "Adicionar Nova Rota" e clique no botão para salvar. A nova rota aparecerá na tabela de "Rotas Cadastradas".</p>
+                        </details>
+                        <details>
+                            <summary>É possível exportar os relatórios?</summary>
+                            <p>Sim. Na página "Relatórios", selecione o tipo de relatório e o período desejado e clique em "Gerar e Baixar". O arquivo será gerado no formato .CSV, compatível com planilhas.</p>
+                        </details>
+                        <details>
+                            <summary>Como respondo a uma reclamação de um cidadão?</summary>
+                            <p>Na página "Reclamações", você pode visualizar todas as ocorrências. Clique em "Ver Detalhes" para alterar o status (de "Pendente" para "Em Análise" ou "Resolvido") e adicionar uma resposta que ficará visível para o usuário.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h3>Suporte Técnico</h3>
+                    <p>Se sua dúvida não foi respondida aqui, nossa equipe de suporte está à disposição.<br>
+                        E-mail para gestores: <a href="mailto:suporte.gestor@greenknot.com">suporte.gestor@greenknot.com</a>
+                    </p>
+                </section>
+            </div>
+        </main>
+
+        <footer class="dash-footer">
+            <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>

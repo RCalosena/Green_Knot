@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Rotas - Green Knot Gestor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body id="pagina-gerenciar-rotas">
+
+    <div class="dashboard-layout">
+        <header class="dash-header">
+            <div class="container">
+                <a href="../index.html" class="logo">Green Knot</a>
+                <div class="user-profile">
+                    <span id="nome-gestor">Bem-vindo, Gestor!</span> 
+                    <a href="#" id="btn-logout">Sair</a>
+                </div>
+            </div>
+        </header>
+
+        <aside class="dash-sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Visão Geral</a></li>
+                    <li class="active"><a href="gerenciar-rotas.html">Gerenciar Rotas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="reclamacoes-gestor.html">Reclamações</a></li>
+                    <li><a href="ajuda-gestor.html">Ajuda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dash-content">
+            <h2 class="page-title">Gerenciar Rotas</h2>
+            
+            <div class="content-card">
+                <section class="content-section">
+                    <h3>Adicionar Nova Rota</h3>
+                    <form class="form-card" id="form-add-rota" style="background: none; padding: 0; border: none; max-width: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="rota-cidade">Cidade</label>
+                                <select id="rota-cidade" name="cidade">
+                                    <option value="">Selecione</option>
+                                    <option value="jundiai">Jundiaí</option>
+                                    <option value="cabreuva">Cabreúva</option>
+                                    <option value="louveira">Louveira</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rota-bairro">Bairro</label>
+                                <input type="text" id="rota-bairro" placeholder="Ex: Centro">
+                            </div>
+                            <div class="form-group">
+                                <label for="rota-dias">Dias da Coleta</label>
+                                <input type="text" id="rota-dias" placeholder="Ex: Segundas, Quartas e Sextas">
+                            </div>
+                            <div class="form-group">
+                                <label for="rota-horario">Horário</label>
+                                <input type="text" id="rota-horario" placeholder="Ex: a partir das 19h">
+                            </div>
+                        </div>
+                        <button type="submit">Adicionar Rota</button>
+                    </form>
+                </section>
+
+                <section class="content-section">
+                    <h3>Rotas Cadastradas</h3>
+                    <div class="tabela-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Cidade</th>
+                                    <th>Bairro</th>
+                                    <th>Dias da Coleta</th>
+                                    <th>Horário</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jundiaí</td>
+                                    <td>Eloy Chaves</td>
+                                    <td>Terças, Quintas e Sábados</td>
+                                    <td>a partir das 08h</td>
+                                    <td><button class="btn-tabela btn-editar">Editar</button> <button class="btn-tabela btn-excluir">Excluir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Jundiaí</td>
+                                    <td>Centro</td>
+                                    <td>Segundas, Quartas e Sextas</td>
+                                    <td>a partir das 19h</td>
+                                    <td><button class="btn-tabela btn-editar">Editar</button> <button class="btn-tabela btn-excluir">Excluir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Cabreúva</td>
+                                    <td>Jacaré</td>
+                                    <td>Terças e Quintas</td>
+                                    <td>a partir das 18h</td>
+                                    <td><button class="btn-tabela btn-editar">Editar</button> <button class="btn-tabela btn-excluir">Excluir</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="dash-footer">
+            <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>

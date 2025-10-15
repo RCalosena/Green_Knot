@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Rotas e Horários de Coleta - GreenKnot</title>
-    <meta name="description" content="Consulte as rotas e os horários da coleta de lixo em sua cidade e bairro de forma fácil e rápida com a plataforma GreenKnot.">
     <meta charset="UTF-8">
+    <title>Rotas e Horários de Coleta - Green Knot</title>
+    <meta name="description" content="Consulte as rotas e os horários da coleta de lixo em sua cidade e bairro de forma fácil e rápida com a plataforma Green Knot.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="pagina-rotas" id="pagina-rotas">
 
-<body class="pagina-rotas">
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Green Knot</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Serviços</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="rotas.html">Rotas e horários de coleta</a></li>
+                            <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="reclamacoes.html">Central de Reclamações</a></li>
+                    <li><a href="ajuda.html">Ajuda</a></li>
+                    <li><a href="login/loginusuario.html" class="nav-button">Fazer Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-   <header class="header-rotas">
-    <div class="container">
-        <h1>GreenKnot</h1>
-        <a href="index.html">Home</a>
-    </div>
-   </header>
-    <main>
-        <h2 class="titulo-rotas">Rotas e horários de coleta</h2>
-        
-        <form class="form-rotas">
-            <label for="cidade">Cidade</label><br>
+    <main class="container page-content">
+    <h2 class="page-title">Rotas e Horários de Coleta</h2>
+    
+    <form class="form-card" id="form-busca-rota">
+        <div class="form-group">
+            <label for="cidade">Cidade</label>
             <select id="cidade" name="cidade">
                 <option value="">Selecione a sua cidade</option>
                 <option value="jundiai">Jundiaí</option>
                 <option value="cabreuva">Cabreúva</option>
                 <option value="louveira">Louveira</option>
             </select>
-            
-            <br><br>
-
-            <label for="bairro">Bairro</label><br>
-            <select id="bairro" name="bairro">
+        </div>
+        
+        <div class="form-group">
+            <label for="bairro">Bairro</label>
+            <select id="bairro" name="bairro" disabled>
                 <option value="">Selecione o seu bairro</option>
             </select>
-            
-            <br><br>
+        </div>
 
-            <button type="submit">CONFIRMAR</button>
-        </form>
-    </main>
+        <button type="submit">CONFIRMAR</button>
+    </form>
 
+    <div id="resultado-rota" class="resultado-container"></div>
+
+</main>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reclamações - Green Knot Gestor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body id="pagina-reclamacoes-gestor">
+
+    <div class="dashboard-layout">
+        <header class="dash-header">
+            <div class="container">
+                <a href="../index.html" class="logo">Green Knot</a>
+                <div class="user-profile">
+                    <span id="nome-gestor">Bem-vindo, Gestor!</span> 
+                    <a href="#" id="btn-logout">Sair</a>
+                </div>
+            </div>
+        </header>
+
+        <aside class="dash-sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Visão Geral</a></li>
+                    <li><a href="gerenciar-rotas.html">Gerenciar Rotas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li class="active"><a href="reclamacoes-gestor.html">Reclamações</a></li>
+                    <li><a href="ajuda-gestor.html">Ajuda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dash-content">
+            <h2 class="page-title">Gerenciar Reclamações</h2>
+            <p class="page-subtitle">Visualize e gerencie as ocorrências enviadas pelos cidadãos.</p>
+
+            <div class="content-card">
+                <section class="content-section">
+                    <h3>Filtros de Busca</h3>
+                    <form class="form-card" style="background: none; padding: 0; border: none; max-width: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="filtro-status">Status</label>
+                                <select id="filtro-status" name="status">
+                                    <option value="">Todos</option>
+                                    <option value="pendente">Pendente</option>
+                                    <option value="em-analise">Em Análise</option>
+                                    <option value="resolvido">Resolvido</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filtro-cidade">Cidade</label>
+                                <select id="filtro-cidade" name="cidade">
+                                    <option value="">Todas</option>
+                                    <option value="jundiai">Jundiaí</option>
+                                    <option value="cabreuva">Cabreúva</option>
+                                    <option value="louveira">Louveira</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="content-section">
+                    <h3>Ocorrências Recebidas</h3>
+                    <div class="tabela-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Autor</th>
+                                    <th>Cidade</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Coleta atrasada no bairro Eloy Chaves</td>
+                                    <td>Carlos Pereira</td>
+                                    <td>Jundiaí</td>
+                                    <td>14/10/2025</td>
+                                    <td><span class="status status-pendente">Pendente</span></td>
+                                    <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sugestão de Ponto de Coleta Seletiva</td>
+                                    <td>Ana Souza</td>
+                                    <td>Louveira</td>
+                                    <td>13/10/2025</td>
+                                    <td><span class="status status-resolvido">Resolvido</span></td>
+                                    <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Resíduos deixados na calçada</td>
+                                    <td>Marcos Lima</td>
+                                    <td>Cabreúva</td>
+                                    <td>12/10/2025</td>
+                                    <td><span class="status status-analise">Em Análise</span></td>
+                                    <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="dash-footer">
+            <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
