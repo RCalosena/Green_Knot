@@ -323,5 +323,69 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
+    // =======================================================
+    // LÓGICA DA PÁGINA DE CRIAR CONTA (criar-conta.html)
+    // =======================================================
+    if (document.body.id === 'pagina-criar-conta') {
+
+        // --- [1] Referências aos Elementos ---
+        const form = document.getElementById('form-criar-conta');
+        const nomeInput = document.getElementById('novo-nome');
+        const emailInput = document.getElementById('novo-email');
+        const senhaInput = document.getElementById('nova-senha');
+        const confirmarSenhaInput = document.getElementById('confirmar-senha');
+        const feedbackSenha = document.getElementById('feedback-senha');
+        const btnCriarConta = document.getElementById('btn-criar-conta');
+
+        // --- [2] Função de Validação Geral ---
+        const validarFormulario = () => {
+            const nomeValido = nomeInput.value.trim().length >= 3;
+            const emailValido = emailInput.value.includes('@') && emailInput.value.includes('.');
+            const senhaValida = senhaInput.value.length >= 6;
+            const senhasCoincidem = senhaInput.value === confirmarSenhaInput.value && senhaInput.value !== '';
+
+            // Feedback visual para a confirmação de senha
+            if (confirmarSenhaInput.value) {
+                if (senhasCoincidem) {
+                    feedbackSenha.textContent = 'Senhas coincidem!';
+                    feedbackSenha.className = 'feedback-senha valido';
+                } else {
+                    feedbackSenha.textContent = 'As senhas não coincidem.';
+                    feedbackSenha.className = 'feedback-senha invalido';
+                }
+            } else {
+                feedbackSenha.textContent = '';
+            }
+
+            // Habilita o botão apenas se tudo estiver válido
+            btnCriarConta.disabled = !(nomeValido && emailValido && senhaValida && senhasCoincidem);
+        };
+
+        // --- [3] Adiciona "escutas" em todos os campos para validar em tempo real ---
+        form.addEventListener('input', validarFormulario);
+
+        // --- [4] Evento de Envio do Formulário ---
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Faz uma última checagem antes de "criar"
+            if (btnCriarConta.disabled) {
+                alert('Por favor, preencha todos os campos corretamente.');
+                return;
+            }
+        
+            // Simulação de criação de conta
+            alert('Conta criada com sucesso! Você será redirecionado para a página de login.');
+        
+            // Redireciona para o login para que o usuário possa entrar
+            window.location.href = 'loginusuario.html';
+        });
+    }
+
+
+
+
+
 
 }); // E A "GRANDE CAIXA" FECHA SÓ AQUI, NO FINAL DE TUDO.

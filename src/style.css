@@ -543,3 +543,21 @@ body {
 .status-resolvido {
     background-color: #2ecc71;
 }
+/* ============================================= */
+/* FEEDBACK DE VALIDAÇÃO                         */
+/* ============================================= */
+
+.feedback-senha {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 8px;
+    height: 1em; /* Garante que o layout não "pule" */
+}
+
+.feedback-senha.invalido {
+    color: #ffdddd;
+}
+
+.feedback-senha.valido {
+    color: #d4edda;
+}
