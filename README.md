@@ -14,7 +14,7 @@ HTML, CSS, JavaScript
 - "/database" (nada)
 - "/docs" contém documentos relacionados ao projeto que não formam parte do site.
 - "/scripts" (nada)
-- "/src" contém toda a programações fonte do site.
+- "/src" contém toda a programação fonte do site.
 - "/tests" contém protótipos, experimentos, e ideias para o site.
 
 ### Protótipo: 

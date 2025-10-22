@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Knot | Login</title>
+    <meta name="description" content="Acesse sua conta na plataforma Green Knot para consultar rotas e registrar ocorrências.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="login-page" id="pagina-login-usuario">
+
+    <header class="login-header">
+        <div class="container">
+            <a href="../index.html" class="back-arrow" aria-label="Voltar para a Home">←</a>
+            <a href="../index.html" class="logo">Green Knot</a>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <div class="login-card login-card--user">
+            <h2>Já tem uma conta?</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="email">E-mail ou CPF</label>
+                    <input type="text" id="email" name="email" placeholder="Digite aqui seu e-mail ou CPF" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite aqui sua senha" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            <p class="login-link">Não tem conta? <a href="criar-conta.html">Crie a sua agora</a></p>
+        </div>
+
+        <div class="social-login">
+            <button type="button" class="gov-button">Entrar com <strong>gov.br</strong></button>
+            <p class="login-link">Se você é gestor, <a href="logingestor.html">clique aqui para entrar</a>.</p>
+        </div>
+    </main>
+<script src="../script.js"></script>
+</body>
+</html>

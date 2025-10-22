@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Green Knot Gestor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body id="pagina-dashboard-gestor">
+
+    <div class="dashboard-layout">
+    <header class="dash-header">
+     <div class="container">
+        <a href="../index.html" class="logo">Green Knot</a>
+         <div class="user-profile">
+            <span id="nome-gestor">Bem-vindo, Gestor!</span> 
+            
+        <a href="#" id="btn-logout">Sair</a>
+         </div>
+         </div>
+    </header>
+
+        <aside class="dash-sidebar">
+            <nav>
+                <ul>
+                    <li class="active"><a href="dashboard.html">Visão Geral</a></li>
+                    <li><a href="gerenciar-rotas.html">Gerenciar Rotas</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="reclamacoes-gestor.html">Reclamações</a></li>
+                    <li><a href="ajuda-gestor.html">Ajuda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dash-content">
+            <h2 class="page-title">Visão Geral</h2>
+            <p class="page-subtitle">Acompanhe os principais indicadores da sua operação.</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Eficiência das Rotas</h3>
+                    <p class="kpi-value"></p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Avaliação Média</h3>
+                    <p class="kpi-value"></p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Lixo Reciclado</h3>
+                    <p class="kpi-value"></p>
+                </div>
+            </div>
+
+            <div class="chart-placeholder">
+                <p>Aqui entrarão os gráficos detalhados.</p>
+            </div>
+        </main>
+
+        <footer class="dash-footer">
+            <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
