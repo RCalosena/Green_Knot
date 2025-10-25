@@ -1,12 +1,9 @@
-// Garante que o script só rode depois que todo o HTML for carregado
-// A "GRANDE CAIXA" COMEÇA AQUI
+//Este listener só ocorre caso o documento seja carregado primeiro 
 document.addEventListener('DOMContentLoaded', () => {
 
     console.log("JavaScript carregado com sucesso!");
 
-    // =======================================================
-    // LÓGICA COMPARTILHADA DAS PÁGINAS PÚBLICAS (Home, Rotas, etc.)
-    // =======================================================
+    //Lógica das páginas públicas com relação ao token armazendo no localstorage do usuário
     const publicNavbar = document.querySelector('.navbar');
     if (publicNavbar) {
         const userToken = localStorage.getItem('user_token');
@@ -31,10 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
-    // =======================================================
-    // LÓGICA DA PÁGINA DE ROTAS (rotas.html)
-    // =======================================================
+//Lógica da página de rotas 
     if (document.body.id === 'pagina-rotas') {
         const form = document.getElementById('form-busca-rota');
         const cidadeSelect = document.getElementById('cidade');
@@ -69,9 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA DA PÁGINA DE LOGIN DE USUÁRIO (loginusuario.html)
-    // =======================================================
+//Lógica da página de login
     if (document.body.id === 'pagina-login-usuario') {
         const loginForm = document.querySelector('.login-card form');
         const emailInput = document.getElementById('email');
@@ -91,9 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA DA PÁGINA DE LOGIN DE GESTOR (logingestor.html)
-    // =======================================================
+//Lógica da página de login do gestor
     if (document.body.id === 'pagina-login-gestor') {
         const total = 50;
         const debounce = (fn, delay = 200) => { let id; return (...args) => { clearTimeout(id); id = setTimeout(() => fn(...args), delay); }; };
@@ -122,9 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // =======================================================
-    // LÓGICA DA PÁGINA DE RECLAMAÇÕES (reclamacoes.html) - CORRIGIDO
-    // =======================================================
+//Lógica da página de reclamações
     if (document.body.id === 'pagina-reclamacoes') {
         const form = document.getElementById('form-reclamacao');
         const nomeInput = document.getElementById('reclamacao-nome');
@@ -164,9 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA COMPARTILHADA DAS PÁGINAS DO GESTOR - 
-    // =======================================================
+//Lógica das páginas do gestor
     const gestorLayout = document.querySelector('.dashboard-layout');
     if (gestorLayout) {
         const gestorToken = localStorage.getItem('gestor_token');
@@ -204,9 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA ESPECÍFICA DO DASHBOARD (pagina-dashboard-gestor)
-    // =======================================================
+//Lógica do dashboard do gestor
     if (document.body.id === 'pagina-dashboard-gestor') {
         const eficiencia = document.querySelector('.kpi-card:nth-child(1) .kpi-value');
         const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
@@ -229,9 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA DA PÁGINA GERENCIAR ROTAS (gerenciar-rotas.html)
-    // =======================================================
+//Lógica da página de gerenciamento de rotas - gestor
     if (document.body.id === 'pagina-gerenciar-rotas') {
         const form = document.getElementById('form-add-rota');
         const cidadeInput = document.getElementById('rota-cidade');
@@ -275,9 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA DA PÁGINA DE RELATÓRIOS (relatorios.html)
-    // =======================================================
+//Lógica da formação de relatórios - Gestor
     if (document.body.id === 'pagina-relatorios-gestor') {
         const form = document.getElementById('form-gerar-relatorio');
         const tipoRelatorioInput = document.getElementById('tipo-relatorio');
@@ -304,9 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =======================================================
-    // LÓGICA DA PÁGINA GERENCIAR RECLAMAÇÕES (reclamacoes-gestor.html)
-    // =======================================================
+//Lógica da página de gerenciamento de reclamações - Gestor
     if (document.body.id === 'pagina-reclamacoes-gestor') {
         const tabelaBody = document.getElementById('tabela-reclamacoes-body');
         tabelaBody.addEventListener('click', (event) => {
@@ -323,10 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
-    // =======================================================
-    // LÓGICA DA PÁGINA DE CRIAR CONTA (criar-conta.html)
-    // =======================================================
+
+//Lógica da criação de conta - Usuário
     if (document.body.id === 'pagina-criar-conta') {
 
         // --- [1] Referências aos Elementos ---
@@ -337,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const confirmarSenhaInput = document.getElementById('confirmar-senha');
         const feedbackSenha = document.getElementById('feedback-senha');
         const btnCriarConta = document.getElementById('btn-criar-conta');
-
+    
         // --- [2] Função de Validação Geral ---
         const validarFormulario = () => {
             const nomeValido = nomeInput.value.trim().length >= 3;
@@ -388,4 +364,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-}); // E A "GRANDE CAIXA" FECHA SÓ AQUI, NO FINAL DE TUDO.
+}); //Este é o fim do listener (ouvinte) do documento carregado inicialmente
