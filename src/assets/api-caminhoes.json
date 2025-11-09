@@ -1,0 +1,29 @@
+{
+    "rotas": [
+        {
+            "id": "eloy-chaves",
+            "localizacoes": [
+                "Caminhão saiu da central.",
+                "Caminhão passando pela Av. dos Imigrantes.",
+                "Iniciando coleta na Rua João Leme.",
+                "Coleta em andamento perto do parque.",
+                "Rota finalizada no bairro."
+            ]
+        },
+        {
+            "id": "centro",
+            "localizacoes": [
+                "Caminhão em manutenção (atraso de 15 min).",
+                "Caminhão saiu da central.",
+                "Tráfego intenso na Av. 9 de Julho.",
+                "Iniciando coleta na Rua Siqueira de Moraes.",
+                "Coleta finalizada no centro."
+            ]
+        }
+    ],
+    "default": [
+        "Caminhão em rota.",
+        "Coleta em andamento no seu bairro.",
+        "Finalizando rota..."
+    ]
+}
