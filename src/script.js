@@ -29,40 +29,106 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 //Lógica da página de rotas 
-    if (document.body.id === 'pagina-rotas') {
-        const form = document.getElementById('form-busca-rota');
-        const cidadeSelect = document.getElementById('cidade');
-        const bairroSelect = document.getElementById('bairro');
-        const resultadoContainer = document.getElementById('resultado-rota');
-        const bairrosPorCidade = { 'jundiai': ['Centro', 'Eloy Chaves', 'Vila Arens', 'Anhangabaú'], 'cabreuva': ['Centro', 'Jacaré', 'Vilarejo', 'Pinhal'], 'louveira': ['Centro', 'Santo Antônio', 'Bairro da Estiva'], };
-        const rotasInfo = { 'centro': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 19h', tipo: 'Coleta Comum' }, 'eloy-chaves': { dias: 'Terças, Quintas e Sábados', horario: 'a partir das 08h', tipo: 'Coleta Comum e Seletiva' }, 'vila-arens': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 08h', tipo: 'Coleta Comum' }, 'jacare': { dias: 'Terças e Quintas', horario: 'a partir das 18h', tipo: 'Coleta Comum' }, };
-        cidadeSelect.addEventListener('change', () => {
-            const cidadeSelecionada = cidadeSelect.value;
-            bairroSelect.innerHTML = '<option value="">Selecione o seu bairro</option>';
-            resultadoContainer.innerHTML = '';
-            if (cidadeSelecionada && bairrosPorCidade[cidadeSelecionada]) {
-                bairroSelect.disabled = false;
-                bairrosPorCidade[cidadeSelecionada].forEach(bairro => { const option = new Option(bairro, bairro.toLowerCase().replace(/\s/g, '-')); bairroSelect.appendChild(option); });
-            } else {
-                bairroSelect.disabled = true;
+if (document.body.id === 'pagina-rotas') {
+
+    // --- [1] Referências aos Elementos ---
+    const form = document.getElementById('form-busca-rota');
+    const cidadeSelect = document.getElementById('cidade');
+    const bairroSelect = document.getElementById('bairro');
+    const resultadoContainer = document.getElementById('resultado-rota');
+    const rastreamentoContainer = document.getElementById('rastreamento-container');
+    let liveUpdateInterval = null;
+    let localizacaoIndex = 0;
+
+    // --- [2] Fontes de Dados (Simulação de Back-end) ---
+    const bairrosPorCidade = { 'jundiai': ['Centro', 'Eloy Chaves', 'Vila Arens', 'Anhangabaú'], 'cabreuva': ['Centro', 'Jacaré', 'Vilarejo', 'Pinhal'], 'louveira': ['Centro', 'Santo Antônio', 'Bairro da Estiva'], };
+    const rotasInfo = { 'centro': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 19h', tipo: 'Coleta Comum' }, 'eloy-chaves': { dias: 'Terças, Quintas e Sábados', horario: 'a partir das 08h', tipo: 'Coleta Comum e Seletiva' }, 'vila-arens': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 08h', tipo: 'Coleta Comum' }, 'jacare': { dias: 'Terças e Quintas', horario: 'a partir das 18h', tipo: 'Coleta Comum' }, };
+
+    // --- [3] LÓGICA DA API EM TEMPO REAL ---
+
+    async function buscarLocalizacaoAtual(bairroId) {
+        try {
+            // CAMINHO CORRIGIDO: 'assets/...' (procurando dentro de src)
+            const response = await fetch('assets/api-caminhoes.json');
+
+            // Se o arquivo não for encontrado (404), o fetch() não dispara um erro,
+            // mas response.ok será 'false'. Precisamos checar isso.
+            if (!response.ok) {
+                throw new Error('Erro de rede: ' + response.statusText);
             }
-        });
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const bairroSelecionado = bairroSelect.value;
-            resultadoContainer.innerHTML = '';
-            if (bairroSelecionado && rotasInfo[bairroSelecionado]) {
-                const rota = rotasInfo[bairroSelecionado];
-                const resultadoHTML = `<div class="resultado-card"><h3>Resultado para: ${bairroSelect.options[bairroSelect.selectedIndex].text}</h3><ul><li><strong>Dias da Coleta:</strong> ${rota.dias}</li><li><strong>Horário:</strong> ${rota.horario}</li><li><strong>Tipo de Coleta:</strong> ${rota.tipo}</li></ul></div>`;
-                resultadoContainer.innerHTML = resultadoHTML;
-            } else if (bairroSelecionado) {
-                resultadoContainer.innerHTML = `<div class="resultado-card--erro"><p>Desculpe, ainda não temos informações detalhadas para este bairro.</p></div>`;
-            } else {
-                alert('Por favor, selecione um bairro para consultar.');
+
+            const data = await response.json();
+
+            // LÓGICA CORRIGIDA: Acessa 'data.default'
+            const rota = data.rotas.find(r => r.id === bairroId) || { localizacoes: data.default }; 
+            const localizacoes = rota.localizacoes;
+            const statusAtual = localizacoes[localizacaoIndex];
+
+            localizacaoIndex = (localizacaoIndex + 1) % localizacoes.length; 
+
+            const statusEl = document.getElementById('status-caminhao-texto');
+            if (statusEl) {
+                statusEl.textContent = statusAtual;
             }
-        });
+
+        } catch (error) {
+            // É AQUI QUE O SEU ERRO ESTAVA CAINDO
+            console.error('Falha ao buscar dados da API:', error);
+            const statusEl = document.getElementById('status-caminhao-texto');
+            if (statusEl) {
+                // Mensagem de erro que você estava vendo
+                statusEl.textContent = "Não foi possível obter a localização.";
+            }
+        }
     }
 
+    // --- [4] Eventos do Formulário ---
+
+    cidadeSelect.addEventListener('change', () => {
+        const cidadeSelecionada = cidadeSelect.value;
+        bairroSelect.innerHTML = '<option value="">Selecione o seu bairro</option>';
+        resultadoContainer.innerHTML = '';
+        rastreamentoContainer.innerHTML = ''; 
+
+        if (liveUpdateInterval) {
+            clearInterval(liveUpdateInterval);
+        }
+        if (cidadeSelecionada && bairrosPorCidade[cidadeSelecionada]) {
+            bairroSelect.disabled = false;
+            bairrosPorCidade[cidadeSelecionada].forEach(bairro => { const option = new Option(bairro, bairro.toLowerCase().replace(/\s/g, '-')); bairroSelect.appendChild(option); });
+        } else {
+            bairroSelect.disabled = true;
+        }
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const bairroSelecionado = bairroSelect.value;
+        resultadoContainer.innerHTML = '';
+        rastreamentoContainer.innerHTML = ''; 
+
+        if (liveUpdateInterval) {
+            clearInterval(liveUpdateInterval);
+        }
+
+        if (bairroSelecionado && rotasInfo[bairroSelecionado]) {
+            const rota = rotasInfo[bairroSelecionado];
+            const resultadoHTML = `<div class="resultado-card"><h3>Resultado para: ${bairroSelect.options[bairroSelect.selectedIndex].text}</h3><ul><li><strong>Dias da Coleta:</strong> ${rota.dias}</li><li><strong>Horário:</strong> ${rota.horario}</li><li><strong>Tipo de Coleta:</strong> ${rota.tipo}</li></ul></div>`;
+            resultadoContainer.innerHTML = resultadoHTML;
+            const rastreamentoHTML = `<div class="rastreamento-card"><h3>Status em Tempo Real</h3><p id="status-caminhao-texto">Buscando localização...</p></div>`;
+            rastreamentoContainer.innerHTML = rastreamentoHTML;
+
+            localizacaoIndex = 0; 
+            buscarLocalizacaoAtual(bairroSelecionado); 
+            liveUpdateInterval = setInterval(() => buscarLocalizacaoAtual(bairroSelecionado), 5000); 
+
+        } else if (bairroSelecionado) {
+            resultadoContainer.innerHTML = `<div class="resultado-card--erro"><p>Desculpe, ainda não temos informações detalhadas para este bairro.</p></div>`;
+        } else {
+            alert('Por favor, selecione um bairro para consultar.');
+        }
+    });
+}
 //Lógica da página de login
     if (document.body.id === 'pagina-login-usuario') {
         const loginForm = document.querySelector('.login-card form');
@@ -191,27 +257,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 //Lógica do dashboard do gestor
-    if (document.body.id === 'pagina-dashboard-gestor') {
-        const eficiencia = document.querySelector('.kpi-card:nth-child(1) .kpi-value');
-        const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
-        const reciclado = document.querySelector('.kpi-card:nth-child(3) .kpi-value');
-        function floatToPercent(value) { return (value * 100).toFixed(0) + '%'; }
-        function avaliarMedia(value) { if (value < 0.5) return 'Ruim'; if (value < 0.7) return 'Regular'; return 'Bom'; }
-        const dados = { eficienciaRotas: 0.97, avaliacoes: [0.85, 0.80, 0.76, 0.70, 0.82, 0.79, 0.75, 0.88, 0.77, 0.71], lixoTotal: 1029384.0, lixoReciclado: 555379.0 };
-        let totalLixoReciclado = dados.lixoReciclado / dados.lixoTotal;
-        let avaliacaoMedia = dados.avaliacoes.reduce((a, b) => a + b, 0) / dados.avaliacoes.length;
-        eficiencia.textContent = floatToPercent(dados.eficienciaRotas);
-        avaliacao.textContent = avaliarMedia(avaliacaoMedia);
-        reciclado.textContent = floatToPercent(totalLixoReciclado);
-        const kpiCards = document.querySelectorAll('.kpi-card');
-        const chartPlaceholder = document.querySelector('.chart-placeholder p');
-        kpiCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const kpiTitle = card.querySelector('h3').textContent;
-                chartPlaceholder.textContent = `Exibindo detalhes para: ${kpiTitle}...`;
-            });
+if (document.body.id === 'pagina-dashboard-gestor') {
+
+    // --- [1] LÓGICA DOS KPIs (do seu amigo) ---
+    const eficiencia = document.querySelector('.kpi-card:nth-child(1) .kpi-value');
+    const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
+    const reciclado = document.querySelector('.kpi-card:nth-child(3) .kpi-value');
+    
+    function floatToPercent(value) { return (value * 100).toFixed(0) + '%'; }
+    function avaliarMedia(value) { if (value < 0.5) return 'Ruim'; if (value < 0.7) return 'Regular'; return 'Bom'; }
+    
+    const dados = { eficienciaRotas: 0.97, avaliacoes: [0.85, 0.80, 0.76, 0.70, 0.82, 0.79, 0.75, 0.88, 0.77, 0.71], lixoTotal: 1029384.0, lixoReciclado: 555379.0 };
+    let totalLixoReciclado = dados.lixoReciclado / dados.lixoTotal;
+    let avaliacaoMedia = dados.avaliacoes.reduce((a, b) => a + b, 0) / dados.avaliacoes.length;
+    
+    eficiencia.textContent = floatToPercent(dados.eficienciaRotas);
+    avaliacao.textContent = avaliarMedia(avaliacaoMedia);
+    reciclado.textContent = floatToPercent(totalLixoReciclado);
+
+    // --- [2] NOVA LÓGICA DOS GRÁFICOS INTERATIVOS ---
+    const kpiCards = document.querySelectorAll('.kpi-card');
+    const chartContainers = document.querySelectorAll('.chart-container');
+
+    // Mapeia os cards para os seus respectivos gráficos
+    const kpiMap = {
+        'Eficiência das Rotas': 'chart-eficiencia',
+        'Avaliação Média': 'chart-avaliacao',
+        'Lixo Reciclado': 'chart-reciclado'
+    };
+
+    kpiCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const kpiTitle = card.querySelector('h3').textContent;
+            const targetChartId = kpiMap[kpiTitle];
+
+            // 1. Remove a classe 'active' de todos os cards e gráficos
+            kpiCards.forEach(c => c.classList.remove('active'));
+            chartContainers.forEach(chart => chart.classList.remove('active'));
+
+            // 2. Adiciona a classe 'active' apenas no card clicado
+            card.classList.add('active');
+            
+            // 3. Adiciona a classe 'active' apenas no gráfico correspondente
+            const targetChart = document.getElementById(targetChartId);
+            if (targetChart) {
+                targetChart.classList.add('active');
+            }
         });
-    }
+    });
+}
 
 //Lógica da página de gerenciamento de rotas - gestor
     if (document.body.id === 'pagina-gerenciar-rotas') {
@@ -286,17 +380,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Lógica da página de gerenciamento de reclamações - Gestor
     if (document.body.id === 'pagina-reclamacoes-gestor') {
+
+        // --- [1] Referências aos Elementos ---
+        const filtroStatus = document.getElementById('filtro-status');
+        const filtroCidade = document.getElementById('filtro-cidade');
         const tabelaBody = document.getElementById('tabela-reclamacoes-body');
+        const todasAsLinhas = tabelaBody.querySelectorAll('tr'); // Pega todas as linhas da tabela
+
+        // --- [2] Função Principal para Aplicar os Filtros ---
+        function aplicarFiltros() {
+            // Pega o TEXTO da opção selecionada (ex: "Pendente", "Jundiaí", "Todos")
+            const statusSelecionado = filtroStatus.options[filtroStatus.selectedIndex].text;
+            const cidadeSelecionada = filtroCidade.options[filtroCidade.selectedIndex].text;
+
+            // [2.1] Percorre cada linha da tabela
+            todasAsLinhas.forEach(linha => {
+            
+                // Pega o texto da célula de Cidade (coluna 3) e Status (coluna 5)
+                const cidadeDaLinha = linha.children[2].textContent;
+                const statusDaLinha = linha.children[4].textContent;
+
+                // [2.2] Verifica se a linha bate com os filtros
+                // A linha só é válida se a cidade bater OU se o filtro for "Todas"
+                const matchCidade = (cidadeSelecionada === 'Todas') || (cidadeSelecionada === cidadeDaLinha);
+                // A linha só é válida se o status bater OU se o filtro for "Todos"
+                const matchStatus = (statusSelecionado === 'Todos') || (statusSelecionado === statusDaLinha);
+
+                // [2.3] Mostra ou esconde a linha
+                if (matchCidade && matchStatus) {
+                linha.style.display = ''; // 'display = ""' volta ao padrão (visível)
+                } else {
+                linha.style.display = 'none'; // Esconde a linha
+                }
+            });
+        }
+
+        // --- [3] Eventos de "escuta" nos filtros ---
+        // Adiciona a função aplicarFiltros para rodar toda vez que um filtro mudar
+        filtroStatus.addEventListener('change', aplicarFiltros);
+        filtroCidade.addEventListener('change', aplicarFiltros);
+
+        // --- [4] Lógica de Alterar Status (que já tínhamos) ---
         tabelaBody.addEventListener('click', (event) => {
             if (event.target.matches('.btn-editar')) {
                 const novoStatus = prompt("Digite o novo status (Pendente, Em Análise, Resolvido):");
                 if (novoStatus) {
                     const linha = event.target.closest('tr');
                     const statusSpan = linha.querySelector('.status');
-                    const novaClasse = `status-${novoStatus.toLowerCase().replace(' ', '-')}`;
+                
+                    // Normaliza o status digitado para o formato da classe CSS
+                    let novaClasse = `status-${novoStatus.toLowerCase().replace(/ /g, '-').replace('á', 'a')}`;
+
+                    // Garante que o texto e a classe fiquem corretos
                     statusSpan.textContent = novoStatus;
                     statusSpan.className = `status ${novaClasse}`;
                     alert(`Status da ocorrência atualizado para "${novoStatus}".`);
+                
+                    // Re-aplica os filtros, pois o status da linha mudou
+                    aplicarFiltros(); 
                 }
             }
         });

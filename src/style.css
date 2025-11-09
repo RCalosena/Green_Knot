@@ -561,3 +561,111 @@ body {
 .feedback-senha.valido {
     color: #d4edda;
 }
+
+/* ============================================= */
+/* GRÁFICOS SIMULADOS DO DASHBOARD (CORRIGIDO)   */
+/* ============================================= */
+
+.chart-placeholder {
+    background: var(--cor-fundo-claro);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-sutil);
+    min-height: 300px;
+}
+
+/* Esconde todos os gráficos por padrão */
+.chart-container {
+    display: none;
+}
+
+/* Mostra apenas o gráfico que estiver "ativo" */
+.chart-container.active {
+    display: block;
+}
+
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinha as barras na base */
+    height: 250px;
+    border-left: 2px solid var(--cor-borda-sutil);
+    border-bottom: 2px solid var(--cor-borda-sutil);
+    padding: 0 20px;
+}
+
+/* NOVO GRUPO: Contém a barra e o rótulo */
+.chart-bar-group {
+    display: flex;
+    flex-direction: column; /* Empilha a barra e o rótulo verticalmente */
+    align-items: center; /* Centraliza a barra e o rótulo */
+    margin: 0 15px;
+    height: 100%; /* Ocupa a altura total para alinhar na base */
+    justify-content: flex-end; /* Alinha o grupo na base */
+}
+
+.chart-bar {
+    width: 60px; /* Largura da barra */
+    transition: height 0.5s ease-out;
+    background-color: #ccc; /* Cor padrão, só para garantir */
+}
+
+/* RÓTULO CORRIGIDO: Agora fora da barra */
+.bar-label {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--cor-texto-escuro); /* Cor do texto normal, pois está em fundo claro */
+    padding-top: 8px; /* Espaço entre a barra (ou a base) e o texto */
+    width: 100px; /* Largura para o texto */
+    text-align: center;
+}
+
+/* Estilo para o KPI que está selecionado */
+.kpi-card.active {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    border-color: var(--cor-verde);
+}
+/* ============================================= */
+/* RASTREAMENTO EM TEMPO REAL (PÁGINA ROTAS)     */
+/* ============================================= */
+
+.rastreamento-card {
+    background-color: #fffbe6;
+    border: 1px solid #ffe58f;
+    border-radius: 8px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.rastreamento-card h3 {
+    margin-top: 0;
+    color: #9f6000;
+    display: flex;
+    align-items: center;
+}
+
+/* Animação de "pulsação" para o status ao vivo */
+.rastreamento-card h3::before {
+    content: '●';
+    font-size: 1.2em;
+    color: #e74c3c; /* Vermelho "ao vivo" */
+    margin-right: 8px;
+    animation: pulse 1.5s infinite;
+}
+
+.rastreamento-card p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--cor-texto-escuro);
+    margin: 8px 0 0 0;
+}
+
+/* Animação de pulsação */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
