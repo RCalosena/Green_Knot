@@ -10,33 +10,41 @@
 <body class="login-page" id="pagina-login-usuario">
 
     <header class="login-header">
-        <div class="container">
+        <header class="container">
             <a href="../index.html" class="back-arrow" aria-label="Voltar para a Home">←</a>
             <a href="../index.html" class="logo">Green Knot</a>
-        </div>
+        </header>
     </header>
 
     <main class="login-container">
-        <div class="login-card login-card--user">
+
+        <article class="login-card login-card--user">
             <h2>Já tem uma conta?</h2>
+
             <form action="#" method="post">
-                <div class="form-group">
+
+                <section class="form-group">
                     <label for="email">E-mail ou CPF</label>
                     <input type="text" id="email" name="email" placeholder="Digite aqui seu e-mail ou CPF" required>
-                </div>
-                <div class="form-group">
+                </section>
+
+                <section class="form-group">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" placeholder="Digite aqui sua senha" required>
-                </div>
+                </section>
+
                 <button type="submit">Entrar</button>
             </form>
-            <p class="login-link">Não tem conta? <a href="criar-conta.html">Crie a sua agora</a></p>
-        </div>
 
-        <div class="social-login">
+            <p class="login-link">Não tem conta? <a href="criar-conta.html">Crie a sua agora</a></p>
+        </article>
+
+        <section class="social-login">
             <p class="login-link">Se você é gestor, <a href="logingestor.html">clique aqui para entrar</a>.</p>
-        </div>
+        </section>
+
     </main>
+
 <script src="../script.js"></script>
 </body>
 </html>
