@@ -10,7 +10,7 @@
 <body id="pagina-reclamacoes">
 
     <header class="navbar">
-        <div class="container">
+        <section class="container">
             <a href="index.html" class="logo">Green Knot</a>
             <nav>
                 <ul class="nav-menu">
@@ -27,41 +27,49 @@
                     <li><a href="login/loginusuario.html" class="nav-button">Fazer Login</a></li>
                 </ul>
             </nav>
-        </div>
+        </section>
     </header>
 
     <main class="container page-content">
         <h2 class="page-title">Central de Reclamações</h2>
         <p class="page-subtitle">Veja o que outros cidadãos estão dizendo ou publique sua própria ocorrência. Sua voz ajuda a melhorar os serviços em nossa cidade.</p>
 
-        <div class="reclamacoes-layout">
+        <section class="reclamacoes-layout">
             
             <section class="form-section">
                 <h3>Deixe sua Reclamação ou Sugestão</h3>
+
                 <form class="form-card" id="form-reclamacao" novalidate>
-                    <div class="form-group">
+                    
+                    <section class="form-group">
                         <label for="reclamacao-nome">Seu Nome:</label>
                         <input type="text" id="reclamacao-nome" name="nome" required minlength="3">
-                    </div>
-                    <div class="form-group">
+                    </section>
+
+                    <section class="form-group">
                         <label for="reclamacao-cidade">Sua Cidade:</label>
                         <input type="text" id="reclamacao-cidade" name="cidade" required minlength="3">
-                    </div>
-                    <div class="form-group">
+                    </section>
+
+                    <section class="form-group">
                         <label for="reclamacao-titulo">Título da Ocorrência:</label>
                         <input type="text" id="reclamacao-titulo" name="titulo" required minlength="5">
-                    </div>
-                    <div class="form-group">
+                    </section>
+
+                    <section class="form-group">
                         <label for="reclamacao-mensagem">Sua Mensagem:</label>
                         <textarea id="reclamacao-mensagem" name="mensagem" rows="6" required minlength="15"></textarea>
-                    </div>
+                    </section>
+
                     <button type="submit" id="btn-publicar" disabled>Publicar</button>
                 </form>
             </section>
 
-            <section class="posts-section">
+            <aside class="posts-section">
                 <h3>Últimas Publicações</h3>
-                <div id="posts-container">
+
+                <section id="posts-container">
+
                     <article class="post-item">
                         <h4>Coleta atrasada no bairro Eloy Chaves</h4>
                         <p class="post-meta"><strong>Autor:</strong> Carlos Pereira | <strong>Cidade:</strong> Jundiaí</p>
@@ -79,10 +87,13 @@
                         <p class="post-meta"><strong>Autor:</strong> Marcos Lima | <strong>Cidade:</strong> Cabreúva</p>
                         <p>A equipe de coleta passou hoje, mas deixou vários sacos rasgados e lixo espalhado pela calçada na minha rua. Peço mais cuidado durante o serviço.</p>
                     </article>
-                </div>
-            </section>
-        </div>
+
+                </section>
+            </aside>
+
+        </section>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
