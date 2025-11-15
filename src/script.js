@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //Lógica da página de rotas 
 if (document.body.id === 'pagina-rotas') {
 
-    // --- [1] Referências aos Elementos ---
+    // Referências aos Elementos
     const form = document.getElementById('form-busca-rota');
     const cidadeSelect = document.getElementById('cidade');
     const bairroSelect = document.getElementById('bairro');
@@ -40,15 +40,14 @@ if (document.body.id === 'pagina-rotas') {
     let liveUpdateInterval = null;
     let localizacaoIndex = 0;
 
-    // --- [2] Fontes de Dados (Simulação de Back-end) ---
+    // Fontes de Dados (Simulação de Back-end)
     const bairrosPorCidade = { 'jundiai': ['Centro', 'Eloy Chaves', 'Vila Arens', 'Anhangabaú'], 'cabreuva': ['Centro', 'Jacaré', 'Vilarejo', 'Pinhal'], 'louveira': ['Centro', 'Santo Antônio', 'Bairro da Estiva'], };
     const rotasInfo = { 'centro': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 19h', tipo: 'Coleta Comum' }, 'eloy-chaves': { dias: 'Terças, Quintas e Sábados', horario: 'a partir das 08h', tipo: 'Coleta Comum e Seletiva' }, 'vila-arens': { dias: 'Segundas, Quartas e Sextas', horario: 'a partir das 08h', tipo: 'Coleta Comum' }, 'jacare': { dias: 'Terças e Quintas', horario: 'a partir das 18h', tipo: 'Coleta Comum' }, };
 
-    // --- [3] LÓGICA DA API EM TEMPO REAL ---
+    // LÓGICA DA API EM TEMPO REAL
 
     async function buscarLocalizacaoAtual(bairroId) {
         try {
-            // CAMINHO CORRIGIDO: 'assets/...' (procurando dentro de src)
             const response = await fetch('assets/api-caminhoes.json');
 
             // Se o arquivo não for encontrado (404), o fetch() não dispara um erro,
@@ -59,7 +58,6 @@ if (document.body.id === 'pagina-rotas') {
 
             const data = await response.json();
 
-            // LÓGICA CORRIGIDA: Acessa 'data.default'
             const rota = data.rotas.find(r => r.id === bairroId) || { localizacoes: data.default }; 
             const localizacoes = rota.localizacoes;
             const statusAtual = localizacoes[localizacaoIndex];
@@ -72,17 +70,16 @@ if (document.body.id === 'pagina-rotas') {
             }
 
         } catch (error) {
-            // É AQUI QUE O SEU ERRO ESTAVA CAINDO
             console.error('Falha ao buscar dados da API:', error);
             const statusEl = document.getElementById('status-caminhao-texto');
             if (statusEl) {
-                // Mensagem de erro que você estava vendo
+                // Mensagem de erro
                 statusEl.textContent = "Não foi possível obter a localização.";
             }
         }
     }
 
-    // --- [4] Eventos do Formulário ---
+    // Eventos do Formulário
 
     cidadeSelect.addEventListener('change', () => {
         const cidadeSelecionada = cidadeSelect.value;
@@ -259,7 +256,7 @@ if (document.body.id === 'pagina-rotas') {
 //Lógica do dashboard do gestor
 if (document.body.id === 'pagina-dashboard-gestor') {
 
-    // --- [1] LÓGICA DOS KPIs (do seu amigo) ---
+    // LÓGICA DOS KPIs
     const eficiencia = document.querySelector('.kpi-card:nth-child(1) .kpi-value');
     const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
     const reciclado = document.querySelector('.kpi-card:nth-child(3) .kpi-value');
@@ -275,11 +272,11 @@ if (document.body.id === 'pagina-dashboard-gestor') {
     avaliacao.textContent = avaliarMedia(avaliacaoMedia);
     reciclado.textContent = floatToPercent(totalLixoReciclado);
 
-    // --- [2] NOVA LÓGICA DOS GRÁFICOS INTERATIVOS ---
+    //NOVA LÓGICA DOS GRÁFICOS INTERATIVOS
     const kpiCards = document.querySelectorAll('.kpi-card');
     const chartContainers = document.querySelectorAll('.chart-container');
 
-    // Mapeia os cards para os seus respectivos gráficos
+    // Mapeia os cards
     const kpiMap = {
         'Eficiência das Rotas': 'chart-eficiencia',
         'Avaliação Média': 'chart-avaliacao',
@@ -381,32 +378,32 @@ if (document.body.id === 'pagina-dashboard-gestor') {
 //Lógica da página de gerenciamento de reclamações - Gestor
     if (document.body.id === 'pagina-reclamacoes-gestor') {
 
-        // --- [1] Referências aos Elementos ---
+        //Referências aos Elementos 
         const filtroStatus = document.getElementById('filtro-status');
         const filtroCidade = document.getElementById('filtro-cidade');
         const tabelaBody = document.getElementById('tabela-reclamacoes-body');
         const todasAsLinhas = tabelaBody.querySelectorAll('tr'); // Pega todas as linhas da tabela
 
-        // --- [2] Função Principal para Aplicar os Filtros ---
+        // Função Principal para Aplicar os Filtros 
         function aplicarFiltros() {
             // Pega o TEXTO da opção selecionada (ex: "Pendente", "Jundiaí", "Todos")
             const statusSelecionado = filtroStatus.options[filtroStatus.selectedIndex].text;
             const cidadeSelecionada = filtroCidade.options[filtroCidade.selectedIndex].text;
 
-            // [2.1] Percorre cada linha da tabela
+            // Percorre cada linha da tabela
             todasAsLinhas.forEach(linha => {
             
                 // Pega o texto da célula de Cidade (coluna 3) e Status (coluna 5)
                 const cidadeDaLinha = linha.children[2].textContent;
                 const statusDaLinha = linha.children[4].textContent;
 
-                // [2.2] Verifica se a linha bate com os filtros
+                // Verifica se a linha bate com os filtros
                 // A linha só é válida se a cidade bater OU se o filtro for "Todas"
                 const matchCidade = (cidadeSelecionada === 'Todas') || (cidadeSelecionada === cidadeDaLinha);
                 // A linha só é válida se o status bater OU se o filtro for "Todos"
                 const matchStatus = (statusSelecionado === 'Todos') || (statusSelecionado === statusDaLinha);
 
-                // [2.3] Mostra ou esconde a linha
+                // Mostra ou esconde a linha
                 if (matchCidade && matchStatus) {
                 linha.style.display = ''; // 'display = ""' volta ao padrão (visível)
                 } else {
@@ -415,12 +412,12 @@ if (document.body.id === 'pagina-dashboard-gestor') {
             });
         }
 
-        // --- [3] Eventos de "escuta" nos filtros ---
+        // Eventos de "escuta" nos filtros
         // Adiciona a função aplicarFiltros para rodar toda vez que um filtro mudar
         filtroStatus.addEventListener('change', aplicarFiltros);
         filtroCidade.addEventListener('change', aplicarFiltros);
 
-        // --- [4] Lógica de Alterar Status (que já tínhamos) ---
+        // Lógica de Alterar Status
         tabelaBody.addEventListener('click', (event) => {
             if (event.target.matches('.btn-editar')) {
                 const novoStatus = prompt("Digite o novo status (Pendente, Em Análise, Resolvido):");
@@ -446,7 +443,7 @@ if (document.body.id === 'pagina-dashboard-gestor') {
 //Lógica da criação de conta - Usuário
     if (document.body.id === 'pagina-criar-conta') {
 
-        // --- [1] Referências aos Elementos ---
+        // Referências aos Elementos 
         const form = document.getElementById('form-criar-conta');
         const nomeInput = document.getElementById('novo-nome');
         const emailInput = document.getElementById('novo-email');
@@ -455,7 +452,7 @@ if (document.body.id === 'pagina-dashboard-gestor') {
         const feedbackSenha = document.getElementById('feedback-senha');
         const btnCriarConta = document.getElementById('btn-criar-conta');
     
-        // --- [2] Função de Validação Geral ---
+        // Função de Validação Geral
         const validarFormulario = () => {
             const nomeValido = nomeInput.value.trim().length >= 3;
             const emailValido = emailInput.value.includes('@') && emailInput.value.includes('.');
@@ -479,10 +476,10 @@ if (document.body.id === 'pagina-dashboard-gestor') {
             btnCriarConta.disabled = !(nomeValido && emailValido && senhaValida && senhasCoincidem);
         };
 
-        // --- [3] Adiciona "escutas" em todos os campos para validar em tempo real ---
+        // Adiciona "escutas" em todos os campos para validar em tempo real
         form.addEventListener('input', validarFormulario);
 
-        // --- [4] Evento de Envio do Formulário ---
+        // Evento de Envio do Formulário
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -499,10 +496,4 @@ if (document.body.id === 'pagina-dashboard-gestor') {
             window.location.href = 'loginusuario.html';
         });
     }
-
-
-
-
-
-
-}); //Este é o fim do listener (ouvinte) do documento carregado inicialmente
+});
