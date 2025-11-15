@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="pagina-rotas" id="pagina-rotas">
 
     <header class="navbar">
-        <div class="container">
+        <section class="container">
             <a href="index.html" class="logo">Green Knot</a>
+
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
+
                     <li class="dropdown">
                         <a href="#">Serviços</a>
                         <ul class="dropdown-menu">
@@ -22,42 +25,43 @@
                             <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
                         </ul>
                     </li>
+
                     <li><a href="reclamacoes.html">Central de Reclamações</a></li>
                     <li><a href="ajuda.html">Ajuda</a></li>
-                    <li><a href="login/loginusuario.html" class="nav-button">Fazer Login</a></li>
+
+                    <li>
+                        <a href="login/loginusuario.html" class="nav-button">Fazer Login</a>
+                    </li>
                 </ul>
             </nav>
-        </div>
+
+        </section>
     </header>
 
     <main class="container page-content">
-    <h2 class="page-title">Rotas e Horários de Coleta</h2>
-    
-    <form class="form-card" id="form-busca-rota">
-        <div class="form-group">
-            <label for="cidade">Cidade</label>
-            <select id="cidade" name="cidade">
-                <option value="">Selecione a sua cidade</option>
-                <option value="jundiai">Jundiaí</option>
-                <option value="cabreuva">Cabreúva</option>
-                <option value="louveira">Louveira</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="bairro">Bairro</label>
-            <select id="bairro" name="bairro" disabled>
-                <option value="">Selecione o seu bairro</option>
-            </select>
-        </div>
+        <h2 class="page-title">Rotas e Horários de Coleta</h2>
+        <form class="form-card" id="form-busca-rota">
+            <section class="form-group">
+                <label for="cidade">Cidade</label>
+                <select id="cidade" name="cidade">
+                    <option value="">Selecione a sua cidade</option>
+                    <option value="jundiai">Jundiaí</option>
+                    <option value="cabreuva">Cabreúva</option>
+                    <option value="louveira">Louveira</option>
+                </select>
+            </section>
+            <section class="form-group">
+                <label for="bairro">Bairro</label>
+                <select id="bairro" name="bairro" disabled>
+                    <option value="">Selecione o seu bairro</option>
+                </select>
+            </section>
+            <button type="submit">CONFIRMAR</button>
+        </form>
+        <section id="resultado-rota" class="resultado-container"></section>
+        <section id="rastreamento-container" class="resultado-container"></section>
+    </main>
 
-        <button type="submit">CONFIRMAR</button>
-    </form>
-
-    <div id="resultado-rota" class="resultado-container"></div>
-    <div id="rastreamento-container" class="resultado-container"></div>
-
-</main>
 <script src="script.js"></script>
 </body>
 </html>
