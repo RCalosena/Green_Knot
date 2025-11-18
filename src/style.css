@@ -13,20 +13,16 @@
 @media (max-width:768px){
     .navbar{
         display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-        margin-inline:auto;
-        font-size:65%;
+        flex-direction: row;
+        gap:10px;
     }
 }
 
 @media (max-width:480px){
     .navbar{
         display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-        margin-inline:auto;
-        font-size:50%;
+        flex-direction: row;
+        gap:10px;
     }
 }
 
