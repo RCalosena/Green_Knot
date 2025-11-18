@@ -10,6 +10,26 @@
     --cor-borda-sutil: #eeeeee;
 }
 
+@media (max-width:768px){
+    .navbar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size:80%;
+    }
+}
+
+@media (max-width:480px){
+    .navbar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size:60%;
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
