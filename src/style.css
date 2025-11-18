@@ -12,12 +12,12 @@
 
 @media (max-width:768px){
     .navbar .container {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
     }
 
     .nav-menu {
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
     }
 
@@ -44,7 +44,7 @@
 /* Benefícios */
 @media (max-width:768px){
     .benefit-article{
-        flex-direction: column !important;
+        flex-direction: column;
         text-align: center;
     }
 }
