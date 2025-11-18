@@ -12,13 +12,17 @@
 
 @media (min-width:768px){
     .navbar{
-        flex:80%;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
     }
 }
 
 @media (min-width:480px){
     .navbar{
-        flex:60%;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
     }
 }
 
