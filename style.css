@@ -10,17 +10,60 @@
     --cor-borda-sutil: #eeeeee;
 }
 
-@media (min-width:768px){
-    .navbar{
-        flex:80%;
+@media (max-width:768px){
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu li {
+        margin-left: 0;
     }
 }
 
-@media (min-width:480px){
-    .navbar{
-        flex:60%;
+/* Hero responsivo */
+@media (max-width:768px){
+    .hero-card{
+        flex-direction: column;
+        text-align: center;
     }
 }
+
+/* Cards da Home */
+@media (max-width:768px){
+    .info-cards{
+        flex-direction: column;
+    }
+}
+
+/* Benefícios */
+@media (max-width:768px){
+    .benefit-article{
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Reclamações */
+@media (max-width:768px){
+    .reclamacoes-layout {
+        grid-template-columns:1fr;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 
 body {
     font-family: Arial, sans-serif;
