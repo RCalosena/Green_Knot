@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Conta - Green Knot</title>
+    <meta name="description" content="Crie sua conta na plataforma Green Knot para acessar todas as funcionalidades.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="login-page" id="pagina-criar-conta">
+
+    <header class="login-header">
+        <div class="container">
+            <a href="loginusuario.html" class="back-arrow" aria-label="Voltar para o Login">←</a>
+            <a href="../index.html" class="logo">Green Knot</a>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <div class="login-card login-card--user">
+            <h2>Crie sua conta</h2>
+            <form id="form-criar-conta" method="post" novalidate>
+                <div class="form-group">
+                    <label for="novo-nome">Nome Completo</label>
+                    <input type="text" id="novo-nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="novo-email">E-mail</label>
+                    <input type="email" id="novo-email" name="email" placeholder="Digite seu melhor e-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="nova-senha">Senha (mínimo 6 caracteres)</label>
+                    <input type="password" id="nova-senha" name="senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmar-senha">Confirmar Senha</label>
+                    <input type="password" id="confirmar-senha" name="confirmar_senha" required>
+                    <div id="feedback-senha" class="feedback-senha"></div>
+                </div>
+                <button type="submit" id="btn-criar-conta" disabled>Criar Conta</button>
+            </form>
+            <p class="login-link">Já tem uma conta? <a href="loginusuario.html">Faça o login</a></p>
+        </div>
+    </main>
+    
+    <script src="../script.js"></script>
+</body>
+</html>

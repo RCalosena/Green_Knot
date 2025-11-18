@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Knot | Login Gestor</title>
+    <meta name="description" content="Acesse sua conta de gestor na plataforma Green Knot para gerenciar rotas, equipes e relatórios.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="login-page" id="pagina-login-gestor">
+
+    <header class="login-header">
+        <header class="container">
+            <a href="../index.html" class="back-arrow" aria-label="Voltar para a Home">←</a>
+            <a href="../index.html" class="logo">Green Knot</a>
+        </header>
+    </header>
+
+    <main class="login-container">
+
+        <article class="login-card login-card--gestor">
+            <h2>Entre na sua conta de gestor</h2>
+
+            <form action="#" method="post">
+
+                <section class="form-group">
+                    <label for="cnpj">CNPJ da empresa</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="Digite aqui o CNPJ" required>
+                </section>
+
+                <section class="form-group">
+                    <label for="email-gestor">E-mail</label>
+                    <input type="email" id="email-gestor" name="email" placeholder="Digite seu e-mail" required>
+                </section>
+
+                <section class="form-group">
+                    <label for="senha-gestor">Senha</label>
+                    <input type="password" id="senha-gestor" name="senha" placeholder="Digite sua senha" required>
+                </section>
+
+                <button type="submit">Entrar</button>
+            </form>
+
+            <p class="login-link">É um cidadão? <a href="loginusuario.html">Clique aqui para entrar</a>.</p>
+        </article>
+
+    </main>
+
+<script src="../script.js"></script>
+</body>
+</html>

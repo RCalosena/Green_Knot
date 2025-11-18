@@ -1,0 +1,120 @@
+html, body
+{
+margin: 0;
+font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+color: #0b2239;
+background: white;
+line-height: 1.5;
+}
+
+h1,p
+{
+    padding-left: 18px;
+}
+
+a
+{
+    visibility: visible;
+}
+
+.cabecalho
+{
+    list-style-type: none;
+    display: flex;
+    gap: 142px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#logoimg
+{
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 25px;
+    margin-right: 25px;
+    width: auto;
+    height: 62px;
+}
+
+#login
+{
+    background-color: black;
+    background-clip: content-box;
+    width: 100px;
+    height: 20px;
+    color: white;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#listamenu
+{
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: center;
+    align-items: center;
+}
+
+footer 
+{
+    background-color: #7fb446;
+    position: relative;
+    margin-bottom: 0px;
+    margin-top: auto;
+    padding-left: 10px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    color: white;
+
+}
+
+#menu
+{
+    display: flex;
+}
+
+#linha1
+{
+    height: 7px;
+    background-color: #7fb446;
+    border: none;
+    margin: 0px;
+}
+
+address 
+{
+    font-style: normal;
+}
+
+a
+{
+    color: white;
+    text-decoration: none;
+}
+
+#login2
+{
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 65px;
+    border-radius: 10px;
+}
+
+.linkmenu
+{
+    color: #0b2239;
+}

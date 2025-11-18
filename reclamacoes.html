@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Central de Reclamações - Green Knot</title>
+    <meta name="description" content="Veja reclamações e sugestões de outros cidadãos sobre a coleta de lixo e publique sua própria ocorrência no mural público da Green Knot.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="pagina-reclamacoes">
+
+    <header class="navbar">
+        <section class="container">
+            <a href="index.html" class="logo">Green Knot</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Serviços</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="rotas.html">Rotas e horários de coleta</a></li>
+                            <li><a href="beneficios.html">Benefícios do manejo estratégico</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="reclamacoes.html">Central de Reclamações</a></li>
+                    <li><a href="ajuda.html">Ajuda</a></li>
+                    <li><a href="login/loginusuario.html" class="nav-button">Fazer Login</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main class="container page-content">
+        <h2 class="page-title">Central de Reclamações</h2>
+        <p class="page-subtitle">Veja o que outros cidadãos estão dizendo ou publique sua própria ocorrência. Sua voz ajuda a melhorar os serviços em nossa cidade.</p>
+
+        <section class="reclamacoes-layout">
+            
+            <section class="form-section">
+                <h3>Deixe sua Reclamação ou Sugestão</h3>
+
+                <form class="form-card" id="form-reclamacao" novalidate>
+                    
+                    <section class="form-group">
+                        <label for="reclamacao-nome">Seu Nome:</label>
+                        <input type="text" id="reclamacao-nome" name="nome" required minlength="3">
+                    </section>
+
+                    <section class="form-group">
+                        <label for="reclamacao-cidade">Sua Cidade:</label>
+                        <input type="text" id="reclamacao-cidade" name="cidade" required minlength="3">
+                    </section>
+
+                    <section class="form-group">
+                        <label for="reclamacao-titulo">Título da Ocorrência:</label>
+                        <input type="text" id="reclamacao-titulo" name="titulo" required minlength="5">
+                    </section>
+
+                    <section class="form-group">
+                        <label for="reclamacao-mensagem">Sua Mensagem:</label>
+                        <textarea id="reclamacao-mensagem" name="mensagem" rows="6" required minlength="15"></textarea>
+                    </section>
+
+                    <button type="submit" id="btn-publicar" disabled>Publicar</button>
+                </form>
+            </section>
+
+            <aside class="posts-section">
+                <h3>Últimas Publicações</h3>
+
+                <section id="posts-container">
+
+                    <article class="post-item">
+                        <h4>Coleta atrasada no bairro Eloy Chaves</h4>
+                        <p class="post-meta"><strong>Autor:</strong> Carlos Pereira | <strong>Cidade:</strong> Jundiaí</p>
+                        <p>Gostaria de registrar que o caminhão de lixo, que deveria passar às terças-feiras de manhã, não passou esta semana. O lixo está acumulado na rua e causando mau cheiro.</p>
+                    </article>
+                    
+                    <article class="post-item">
+                        <h4>Sugestão de Ponto de Coleta Seletiva</h4>
+                        <p class="post-meta"><strong>Autor:</strong> Ana Souza | <strong>Cidade:</strong> Louveira</p>
+                        <p>Olá! Sugiro a instalação de um ponto de coleta seletiva na praça central. Acredito que ajudaria muito os moradores a descartar o lixo reciclável corretamente.</p>
+                    </article>
+                    
+                    <article class="post-item">
+                        <h4>Resíduos deixados na calçada</h4>
+                        <p class="post-meta"><strong>Autor:</strong> Marcos Lima | <strong>Cidade:</strong> Cabreúva</p>
+                        <p>A equipe de coleta passou hoje, mas deixou vários sacos rasgados e lixo espalhado pela calçada na minha rua. Peço mais cuidado durante o serviço.</p>
+                    </article>
+
+                </section>
+            </aside>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
