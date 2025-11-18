@@ -12,17 +12,29 @@
 
 @media (max-width:768px){
     .navbar{
+        width: 100%;
         display: flex; 
-        flex-direction: row;
-        gap:10px;
+        justify-content: space-between; 
+        align-items: center;
+        margin-inline:auto;
+    }
+
+    .navbar .logo{
+        font-size:65%;
     }
 }
 
 @media (max-width:480px){
     .navbar{
+        width: 100%;
         display: flex; 
-        flex-direction: row;
-        gap:10px;
+        justify-content: space-between; 
+        align-items: center;
+        margin-inline:auto;
+    }
+
+    .navbar .logo{
+        font-size:65%;
     }
 }
 
