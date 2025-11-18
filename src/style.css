@@ -12,12 +12,12 @@
 
 @media (max-width:768px){
     .navbar .container {
-        flex-direction: row;
+        flex-direction: column;
         gap: 15px;
     }
 
     .nav-menu {
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
     }
 
