@@ -11,34 +11,51 @@
 }
 
 @media (max-width:768px){
-    .navbar{
-        width: 100%;
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-        margin-inline:auto;
-        box-sizing:border-box;
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .navbar .logo{
-        font-size:65%;
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu li {
+        margin-left: 0;
     }
 }
 
-@media (max-width:480px){
-    .navbar{
-        width: 100%;
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-        margin-inline:auto;
-        box-sizing:border-box;
-    }
-
-    .navbar .logo{
-        font-size:65%;
+/* Hero responsivo */
+@media (max-width:768px){
+    .hero-card{
+        flex-direction: column;
+        text-align: center;
     }
 }
+
+/* Cards da Home */
+@media (max-width:768px){
+    .info-cards{
+        flex-direction: column;
+    }
+}
+
+/* Benefícios */
+@media (max-width:768px){
+    .benefit-article{
+        flex-direction: column !important;
+        text-align: center;
+    }
+}
+
+/* Reclamações */
+@media (max-width:768px){
+    .reclamacoes-layout {
+        grid-template-columns:1fr;
+    }
+}
+
 
 body {
     font-family: Arial, sans-serif;
