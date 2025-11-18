@@ -17,6 +17,7 @@
         justify-content: space-between; 
         align-items: center;
         margin-inline:auto;
+        box-sizing:border-box;
     }
 
     .navbar .logo{
@@ -31,6 +32,7 @@
         justify-content: space-between; 
         align-items: center;
         margin-inline:auto;
+        box-sizing:border-box;
     }
 
     .navbar .logo{
