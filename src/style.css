@@ -10,22 +10,6 @@
     --cor-borda-sutil: #eeeeee;
 }
 
-@media (max-width:768px){
-    .navbar .container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-menu li {
-        margin-left: 0;
-    }
-}
-
 /* Hero responsivo */
 @media (max-width:768px){
     .hero-card{
@@ -557,6 +541,7 @@ body {
     font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
+    white-space: nowrap;
 }
 .status-pendente {
     background-color: #e74c3c;
@@ -683,4 +668,15 @@ body {
     0% { opacity: 1; }
     50% { opacity: 0.3; }
     100% { opacity: 1; }
+}
+
+/* Espaçamento entre cada rótulo, input e feedback */
+.form-group > label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group > input {
+    display: block;
+    margin-bottom: 14px;
 }

@@ -8,15 +8,16 @@
 </head>
 <body id="pagina-reclamacoes-gestor">
 
-    <div class="dashboard-layout">
+    <section class="dashboard-layout">
+
         <header class="dash-header">
-            <div class="container">
+            <section class="container">
                 <a href="../index.html" class="logo">Green Knot</a>
                 <div class="user-profile">
                     <span id="nome-gestor">Bem-vindo, Gestor!</span> 
                     <a href="#" id="btn-logout">Sair</a>
                 </div>
-            </div>
+            </section>
         </header>
 
         <aside class="dash-sidebar">
@@ -35,11 +36,13 @@
             <h2 class="page-title">Gerenciar Reclamações</h2>
             <p class="page-subtitle">Visualize e gerencie as ocorrências enviadas pelos cidadãos.</p>
 
-            <div class="content-card">
+            <article class="content-card">
+
                 <section class="content-section">
                     <h3>Filtros de Busca</h3>
                     <form class="form-card" style="background: none; padding: 0; border: none; max-width: none;">
-                        <div class="form-grid">
+                        
+                        <section class="form-grid">
                             <div class="form-group">
                                 <label for="filtro-status">Status</label>
                                 <select id="filtro-status" name="status">
@@ -49,6 +52,7 @@
                                     <option value="resolvido">Resolvido</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="filtro-cidade">Cidade</label>
                                 <select id="filtro-cidade" name="cidade">
@@ -58,13 +62,15 @@
                                     <option value="louveira">Louveira</option>
                                 </select>
                             </div>
-                        </div>
+                        </section>
+
                     </form>
                 </section>
 
                 <section class="content-section">
                     <h3>Ocorrências Recebidas</h3>
-                    <div class="tabela-container">
+
+                    <section class="tabela-container">
                         <table class="dash-table">
                             <thead>
                                 <tr>
@@ -76,7 +82,9 @@
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tabela-reclamacoes-body"> <tr>
+
+                            <tbody id="tabela-reclamacoes-body">
+                                <tr>
                                     <td>Coleta atrasada no bairro Eloy Chaves</td>
                                     <td>Carlos Pereira</td>
                                     <td>Jundiaí</td>
@@ -84,6 +92,7 @@
                                     <td><span class="status status-pendente">Pendente</span></td>
                                     <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
                                 </tr>
+
                                 <tr>
                                     <td>Sugestão de Ponto de Coleta Seletiva</td>
                                     <td>Ana Souza</td>
@@ -92,6 +101,7 @@
                                     <td><span class="status status-resolvido">Resolvido</span></td>
                                     <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
                                 </tr>
+
                                 <tr>
                                     <td>Resíduos deixados na calçada</td>
                                     <td>Marcos Lima</td>
@@ -101,16 +111,20 @@
                                     <td><button class="btn-tabela btn-editar">Ver Detalhes</button></td>
                                 </tr>
                             </tbody>
+
                         </table>
-                    </div>
+                    </section>
+
                 </section>
-            </div>
+            </article>
+
         </main>
 
         <footer class="dash-footer">
             <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
         </footer>
-    </div>
+
+    </section>
     
     <script src="../script.js"></script>
 </body>

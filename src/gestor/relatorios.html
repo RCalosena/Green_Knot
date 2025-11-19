@@ -8,15 +8,16 @@
 </head>
 <body id="pagina-relatorios-gestor">
 
-    <div class="dashboard-layout">
+    <section class="dashboard-layout">
+
         <header class="dash-header">
-            <div class="container">
+            <section class="container">
                 <a href="../index.html" class="logo">Green Knot</a>
                 <div class="user-profile">
                     <span id="nome-gestor">Bem-vindo, Gestor!</span> 
                     <a href="#" id="btn-logout">Sair</a>
                 </div>
-            </div>
+            </section>
         </header>
 
         <aside class="dash-sidebar">
@@ -32,67 +33,82 @@
         </aside>
 
         <main class="dash-content">
-        <h2 class="page-title">Relatórios de Operação</h2>
-        <p class="page-subtitle">Exporte dados e analise a performance da sua operação de coleta.</p>
+            <h2 class="page-title">Relatórios de Operação</h2>
+            <p class="page-subtitle">Exporte dados e analise a performance da sua operação de coleta.</p>
 
-        <div class="content-card">
-            <section class="content-section">
-                <h3>Gerar Novo Relatório</h3>
-                <form class="form-card" id="form-gerar-relatorio" style="background: none; padding: 0; border: none; max-width: none;">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="tipo-relatorio">Tipo de Relatório</label>
-                            <select id="tipo-relatorio" name="tipo">
-                                <option value="">Selecione</option>
-                                <option value="Eficiência de Rotas">Eficiência de Rotas</option>
-                                <option value="Custos Operacionais">Custos Operacionais</option>
-                                <option value="Consolidado de Reclamações">Consolidado de Reclamações</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="periodo-relatorio">Período</label>
-                            <input type="month" id="periodo-relatorio">
-                        </div>
-                    </div>
-                    <button type="submit">Gerar e Baixar</button>
-                </form>
-            </section>
-        
-            <section class="content-section">
-                <h3>Histórico de Relatórios</h3>
-                <div class="tabela-container">
-                    <table class="dash-table">
-                        <thead>
-                            <tr>
-                                <th>Data de Geração</th>
-                                <th>Tipo de Relatório</th>
-                                <th>Período</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabela-relatorios-body"> <tr>
-                                <td>14/10/2025</td>
-                                <td>Eficiência de Rotas</td>
-                                <td>Setembro/2025</td>
-                                <td><button class="btn-tabela btn-editar">Baixar Novamente</button></td>
-                            </tr>
-                            <tr>
-                                <td>01/10/2025</td>
-                                <td>Custos Operacionais</td>
-                                <td>Setembro/2025</td>
-                                <td><button class="btn-tabela btn-editar">Baixar Novamente</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
-    </main>
+            <article class="content-card">
+
+                <section class="content-section">
+                    <h3>Gerar Novo Relatório</h3>
+
+                    <form class="form-card" id="form-gerar-relatorio" 
+                        style="background: none; padding: 0; border: none; max-width: none;">
+
+                        <section class="form-grid">
+                            <div class="form-group">
+                                <label for="tipo-relatorio">Tipo de Relatório</label>
+                                <select id="tipo-relatorio" name="tipo">
+                                    <option value="">Selecione</option>
+                                    <option value="Eficiência de Rotas">Eficiência de Rotas</option>
+                                    <option value="Custos Operacionais">Custos Operacionais</option>
+                                    <option value="Consolidado de Reclamações">Consolidado de Reclamações</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="periodo-relatorio">Período</label>
+                                <input type="month" id="periodo-relatorio">
+                            </div>
+                        </section>
+
+                        <button type="submit">Gerar e Baixar</button>
+
+                    </form>
+                </section>
+
+                <section class="content-section">
+                    <h3>Histórico de Relatórios</h3>
+
+                    <section class="tabela-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Data de Geração</th>
+                                    <th>Tipo de Relatório</th>
+                                    <th>Período</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabela-relatorios-body">
+                                <tr>
+                                    <td>14/10/2025</td>
+                                    <td>Eficiência de Rotas</td>
+                                    <td>Setembro/2025</td>
+                                    <td><button class="btn-tabela btn-editar">Baixar Novamente</button></td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025</td>
+                                    <td>Custos Operacionais</td>
+                                    <td>Setembro/2025</td>
+                                    <td><button class="btn-tabela btn-editar">Baixar Novamente</button></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </section>
+
+                </section>
+
+            </article>
+
+        </main>
 
         <footer class="dash-footer">
             <p>&copy; 2025 Green Knot. Todos os direitos reservados.</p>
         </footer>
-    </div>
+
+    </section>
     
     <script src="../script.js"></script>
 </body>
