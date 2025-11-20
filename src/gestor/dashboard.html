@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - Green Knot Gestor</title>
+    <meta name="description" content="Painel de controle do gestor Green Knot para acompanhamento de rotas e eficiência.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body id="pagina-dashboard-gestor">
 
     <div class="dashboard-layout">
-    <header class="dash-header">
-     <div class="container">
-        <a href="../index.html" class="logo">Green Knot</a>
-         <div class="user-profile">
-            <span id="nome-gestor">Bem-vindo, Gestor!</span> 
-            
-        <a href="#" id="btn-logout">Sair</a>
-         </div>
-         </div>
-    </header>
+        
+        <header class="dash-header">
+            <div class="container">
+                <a href="../index.html" class="logo">Green Knot</a>
+                
+                <nav class="user-profile" aria-label="Menu do Usuário">
+                    <span id="nome-gestor">Bem-vindo, Gestor!</span> 
+                    <a href="#" id="btn-logout">Sair</a>
+                </nav>
+            </div>
+        </header>
 
         <aside class="dash-sidebar">
-            <nav>
+            <nav aria-label="Navegação Principal">
                 <ul>
                     <li class="active"><a href="dashboard.html">Visão Geral</a></li>
                     <li><a href="gerenciar-rotas.html">Gerenciar Rotas</a></li>
@@ -33,72 +35,74 @@
         </aside>
 
         <main class="dash-content">
-            <h2 class="page-title">Visão Geral</h2>
-            <p class="page-subtitle">Acompanhe os principais indicadores da sua operação.</p>
+            <header class="content-header">
+                <h2 class="page-title">Visão Geral</h2>
+                <p class="page-subtitle">Acompanhe os principais indicadores da sua operação.</p>
+            </header>
 
-            <div class="kpi-grid">
-                <div class="kpi-card">
+            <section class="kpi-grid" aria-label="Indicadores de Desempenho">
+                <article class="kpi-card">
                     <h3>Eficiência das Rotas</h3>
-                    <p class="kpi-value"></p>
-                </div>
-                <div class="kpi-card">
+                    <p class="kpi-value"></p> </article>
+                <article class="kpi-card">
                     <h3>Avaliação Média</h3>
                     <p class="kpi-value"></p>
-                </div>
-                <div class="kpi-card">
+                </article>
+                <article class="kpi-card">
                     <h3>Lixo Reciclado</h3>
                     <p class="kpi-value"></p>
-                </div>
-            </div>
+                </article>
+            </section>
 
-            <div class="chart-placeholder" id="chart-area">
+            <section class="chart-placeholder" id="chart-area" aria-label="Gráficos Detalhados">
 
-    <div class="chart-container" id="chart-eficiencia">
-        <h4>Detalhes de Eficiência das Rotas</h4>
-        <div class="chart-wrapper">
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 97%; background-color: #2ecc71;"></div>
-                <span class="bar-label">Eficiente (97%)</span>
-            </div>
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 3%; background-color: #e74c3c;"></div>
-                <span class="bar-label">Ajustes (3%)</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="chart-container" id="chart-avaliacao">
-        <h4>Detalhes da Avaliação Média</h4>
-        <div class="chart-wrapper">
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 85%; background-color: #2ecc71;"></div>
-                <span class="bar-label">Bom (85%)</span>
-            </div>
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 10%; background-color: #f39c12;"></div>
-                <span class="bar-label">Regular (10%)</span>
-            </div>
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 5%; background-color: #e74c3c;"></div>
-                <span class="bar-label">Ruim (5%)</span>
-            </div>
-        </div>
-    </div>
+                <article class="chart-container" id="chart-eficiencia">
+                    <h4>Detalhes de Eficiência das Rotas</h4>
+                    <div class="chart-wrapper" role="img" aria-label="Gráfico de barras de eficiência">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 97%; background-color: #2ecc71;"></div>
+                            <span class="bar-label">Eficiente (97%)</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 3%; background-color: #e74c3c;"></div>
+                            <span class="bar-label">Ajustes (3%)</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="chart-container" id="chart-avaliacao">
+                    <h4>Detalhes da Avaliação Média</h4>
+                    <div class="chart-wrapper" role="img" aria-label="Gráfico de barras de avaliação">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 85%; background-color: #2ecc71;"></div>
+                            <span class="bar-label">Bom (85%)</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 10%; background-color: #f39c12;"></div>
+                            <span class="bar-label">Regular (10%)</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 5%; background-color: #e74c3c;"></div>
+                            <span class="bar-label">Ruim (5%)</span>
+                        </div>
+                    </div>
+                </article>
 
-    <div class="chart-container" id="chart-reciclado">
-        <h4>Detalhes de Lixo Reciclado</h4>
-        <div class="chart-wrapper">
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 54%; background-color: #3498db;"></div>
-                <span class="bar-label">Reciclado (54%)</span>
-            </div>
-            <div class="chart-bar-group">
-                <div class="chart-bar" style="height: 46%; background-color: #95a5a6;"></div>
-                <span class="bar-label">Não Reciclado (46%)</span>
-            </div>
-        </div>
-    </div>
-</div>
+                <article class="chart-container" id="chart-reciclado">
+                    <h4>Detalhes de Lixo Reciclado</h4>
+                    <div class="chart-wrapper" role="img" aria-label="Gráfico de barras de reciclagem">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 54%; background-color: #3498db;"></div>
+                            <span class="bar-label">Reciclado (54%)</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 46%; background-color: #95a5a6;"></div>
+                            <span class="bar-label">Não Reciclado (46%)</span>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
         </main>
 
         <footer class="dash-footer">
