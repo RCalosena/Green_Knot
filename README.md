@@ -3,7 +3,7 @@
 
  Plataforma completamente otimizada para o SEO
 
-### Tecnologías utilizadas:
+### Tecnologias utilizadas:
 HTML, CSS, JavaScript
 
 ### Estrutura do Projeto
