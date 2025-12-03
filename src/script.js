@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // muda texto de "login" para "sair"
                 // em vez de redirecionar para o login, remove o token do usuario 
                 loginButton.textContent = 'Sair';
-                loginButton.href = '#';
+                loginButton.href = '';
                 loginButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     localStorage.removeItem('user_token');
