@@ -36,4 +36,4 @@ https://ecogest.my.canva.site/fazer-login
 - Édi César Neves Filho
 
 ## Status
-Em desenvolvimento
+Concluido
