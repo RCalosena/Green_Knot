@@ -359,7 +359,7 @@ if (document.body.id === 'pagina-rotas') {
 //Lógica do dashboard do gestor
 if (document.body.id === 'pagina-dashboard-gestor') {
 
-    // LÓGICA DOS KPIs
+    // pega cada bloco de dados no dashboard
     const eficiencia = document.querySelector('.kpi-card:nth-child(1) .kpi-value');
     const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
     const reciclado = document.querySelector('.kpi-card:nth-child(3) .kpi-value');
