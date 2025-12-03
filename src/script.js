@@ -4,19 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("JavaScript carregado com sucesso!");
 
     //Lógica das páginas públicas com relação ao token armazendo no localstorage do usuário
-    const publicNavbar = document.querySelector('.navbar');
+    const publicNavbar = document.querySelector('.navbar'); // pega objeto atravez do css
     if (publicNavbar) {
+        // constantes tokens
         const userToken = localStorage.getItem('user_token');
         const gestorToken = localStorage.getItem('gestor_token');
+        // constante representando botão do login
         const loginButton = document.querySelector('.nav-menu a.nav-button');
 
         if (gestorToken) {
             if (loginButton) {
+                // muda o texto de "login" para "painel do gestor"
+                // ou seja, o botão de login vira botão que redireciona para pagina do gestor
                 loginButton.textContent = 'Painel do Gestor';
                 loginButton.href = 'gestor/dashboard.html';
             }
         } else if (userToken) {
             if (loginButton) {
+                // muda texto de "login" para "sair"
+                // em vez de redirecionar para o login, remove o token do usuario 
                 loginButton.textContent = 'Sair';
                 loginButton.href = '#';
                 loginButton.addEventListener('click', (event) => {
@@ -31,12 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
 //Lógica da página de rotas 
 if (document.body.id === 'pagina-rotas') {
 
-    // Referências aos Elementos
+    // Referências aos Elementos do forms da pagina
     const form = document.getElementById('form-busca-rota');
     const cidadeSelect = document.getElementById('cidade');
     const bairroSelect = document.getElementById('bairro');
     const resultadoContainer = document.getElementById('resultado-rota');
     const rastreamentoContainer = document.getElementById('rastreamento-container');
+
+    // variaveis para o tracker de localização
     let liveUpdateInterval = null;
     let localizacaoIndex = 0;
 
@@ -56,19 +64,26 @@ if (document.body.id === 'pagina-rotas') {
                 throw new Error('Erro de rede: ' + response.statusText);
             }
 
+            // dados no promise
             const data = await response.json();
 
+            // dados das rotas
             const rota = data.rotas.find(r => r.id === bairroId) || { localizacoes: data.default }; 
+            
+            // armazenamento locais e status do caminhão
             const localizacoes = rota.localizacoes;
             const statusAtual = localizacoes[localizacaoIndex];
-
+            
+            // atualize a localização
             localizacaoIndex = (localizacaoIndex + 1) % localizacoes.length; 
-
+            
+            // muda o status do caminhão
             const statusEl = document.getElementById('status-caminhao-texto');
             if (statusEl) {
                 statusEl.textContent = statusAtual;
             }
 
+        // tratamento de erros
         } catch (error) {
             console.error('Falha ao buscar dados da API:', error);
             const statusEl = document.getElementById('status-caminhao-texto');
@@ -81,15 +96,24 @@ if (document.body.id === 'pagina-rotas') {
 
     // Eventos do Formulário
 
+    // ao mudar o conteudo do seletor de cidade...
     cidadeSelect.addEventListener('change', () => {
+        // cidade selecionada
         const cidadeSelecionada = cidadeSelect.value;
+
+        // crie um bloco para selecionar o bairro
         bairroSelect.innerHTML = '<option value="">Selecione o seu bairro</option>';
+
+        // limpa elemento do resultado e rastreamento
         resultadoContainer.innerHTML = '';
         rastreamentoContainer.innerHTML = ''; 
 
+        // se liveUpdateInterval não eh null
         if (liveUpdateInterval) {
             clearInterval(liveUpdateInterval);
         }
+
+        // se a cidade foi selecionada e o bairro existe na cidade
         if (cidadeSelecionada && bairrosPorCidade[cidadeSelecionada]) {
             bairroSelect.disabled = false;
             bairrosPorCidade[cidadeSelecionada].forEach(bairro => { const option = new Option(bairro, bairro.toLowerCase().replace(/\s/g, '-')); bairroSelect.appendChild(option); });
