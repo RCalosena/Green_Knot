@@ -455,6 +455,7 @@ if (document.body.id === 'pagina-dashboard-gestor') {
                     alert('Rota excluída com sucesso.');
                 }
             }
+        // permite editar a tabela
             if (event.target.matches('.btn-editar')) {
                 const linhaParaEditar = event.target.closest('tr');
                 const celulaHorario = linhaParaEditar.children[3];
