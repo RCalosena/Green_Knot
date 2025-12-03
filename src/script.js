@@ -429,7 +429,7 @@ if (document.body.id === 'pagina-dashboard-gestor') {
         // tabela
         const tabelaBody = document.getElementById('tabela-rotas-body');
 
-        //
+        // ao fazer submit, pega valores sem espaços e verifica se foram preenchidos
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             const cidade = cidadeInput.value.trim();
@@ -445,6 +445,8 @@ if (document.body.id === 'pagina-dashboard-gestor') {
             tabelaBody.appendChild(novaLinha);
             form.reset();
         });
+
+        // permite excluir da tabela
         tabelaBody.addEventListener('click', (event) => {
             if (event.target.matches('.btn-excluir')) {
                 const linhaParaExcluir = event.target.closest('tr');
