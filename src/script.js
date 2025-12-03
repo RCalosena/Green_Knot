@@ -219,23 +219,33 @@ if (document.body.id === 'pagina-rotas') {
         const cnpjInput = document.getElementById('cnpj');
         const emailInput = document.getElementById('email-gestor');
         const senhaInput = document.getElementById('senha-gestor');
-        
+
+        // para cada um dos inputs aplica o debounce 150ms delay
         [cnpjInput, emailInput, senhaInput].forEach(input => {
             input.addEventListener("input", debounce((e) => {
                 if (e.target.value.length > totalchar) { e.target.value = e.target.value.slice(0, totalchar); }
             }, 150));
         });
+
+        // ao fazer submit...
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            // pega valores dos campos sem espaços
             const cnpj = cnpjInput.value.trim();
             const email = emailInput.value.trim();
             const senha = senhaInput.value.trim();
+
+            // se não estão vazios...
             if (cnpj && email && senha) {
+
+                // gere token falso, avisa usuario do sucesso de login, redireciona para o dashboard de gestor
                 const tokenFalsoGestor = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjEiLCJuYW1lIjoiSm9hbyBHZXN0b3IiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1MTYyMzkwMjJ9.Qo_s-y28t_mY-Qy-YxVb-wX-YxWb-wX-YxVb-wX-YxW";
                 localStorage.setItem('gestor_token', tokenFalsoGestor);
                 alert('Login de Gestor realizado com sucesso! Redirecionando...');
                 window.location.href = '../gestor/dashboard.html';
             } else {
+                // se estão vazios alguns dos campos avisa para prencher o form
                 alert('Por favor, preencha todos os campos do formulário.');
             }
         });
@@ -243,35 +253,56 @@ if (document.body.id === 'pagina-rotas') {
     
 //Lógica da página de reclamações
     if (document.body.id === 'pagina-reclamacoes') {
+
+        // pega formulario
         const form = document.getElementById('form-reclamacao');
+
+        // inputs
         const nomeInput = document.getElementById('reclamacao-nome');
         const cidadeInput = document.getElementById('reclamacao-cidade');
         const tituloInput = document.getElementById('reclamacao-titulo');
         const mensagemInput = document.getElementById('reclamacao-mensagem');
         const btnPublicar = document.getElementById('btn-publicar');
+
+        // pega todos os posts
         const postsContainer = document.getElementById('posts-container');
+
+        // função validar formulario
         const validarFormulario = () => {
+            // estabelece limite inferior de caracteres
             const nomeValido = nomeInput.value.trim().length >= 3;
             const cidadeValida = cidadeInput.value.trim().length >= 3;
             const tituloValido = tituloInput.value.trim().length >= 5;
             const mensagemValida = mensagemInput.value.trim().length >= 15;
+
+            // se algumas ou todas as constantes serem falsas, o botão de publicar deve ser deshabilitado
             btnPublicar.disabled = !(nomeValido && cidadeValida && tituloValido && mensagemValida);
         };
+
+        // em cada input, valida o formulario
         nomeInput.addEventListener('input', validarFormulario);
         cidadeInput.addEventListener('input', validarFormulario);
         tituloInput.addEventListener('input', validarFormulario);
         mensagemInput.addEventListener('input', validarFormulario);
+
+        // ao fazer submit...
         form.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            // não faz nada se o botão estiver desabilitado
             if (btnPublicar.disabled) {
                 alert('Por favor, preencha todos os campos corretamente antes de publicar.');
                 return;
             }
+
+            // pega inputs sem espaços
             const nome = nomeInput.value.trim();
             const cidade = cidadeInput.value.trim();
             const titulo = tituloInput.value.trim();
             const mensagem = mensagemInput.value.trim();
             const novoPost = document.createElement('article');
+
+            // adicione o post no site
             novoPost.classList.add('post-item');
             novoPost.innerHTML = `<h4>${titulo}</h4><p class="post-meta"><strong>Autor:</strong> ${nome} | <strong>Cidade:</strong> ${cidade}</p><p>${mensagem}</p>`;
             postsContainer.prepend(novoPost);
@@ -285,6 +316,7 @@ if (document.body.id === 'pagina-rotas') {
     const gestorLayout = document.querySelector('.dashboard-layout');
     if (gestorLayout) {
         const gestorToken = localStorage.getItem('gestor_token');
+        // sempre valida se o token existe
         if (!gestorToken) {
             alert('Acesso negado. Por favor, faça o login como gestor.');
             window.location.href = '../login/logingestor.html';
@@ -292,6 +324,7 @@ if (document.body.id === 'pagina-rotas') {
             console.log("Acesso à área do gestor permitido.");
             const btnLogout = document.getElementById('btn-logout');
             if (btnLogout) {
+                // se aperta o botão de logout, remove o token
                 btnLogout.addEventListener('click', (event) => {
                     event.preventDefault();
                     localStorage.removeItem('gestor_token');
@@ -300,14 +333,18 @@ if (document.body.id === 'pagina-rotas') {
                 });
             }
             try {
+                // tenta pegar o nome do gestor (decodifica token)
                 const payload = JSON.parse(atob(gestorToken.split('.')[1]));
                 const nomeGestor = payload.name || 'Gestor';
                 const nomeGestorEl = document.getElementById('nome-gestor');
                 if (nomeGestorEl) { nomeGestorEl.textContent = `Bem-vindo, ${nomeGestor}!`; }
             } catch (error) {
+                // trata erro
                 console.error("Erro ao decodificar o token:", error);
             }
         }
+
+        // para cada link do sidebar, verifica se está na pagina do link. se tá, desabilita o botão dessa janela no sidebar
         const currentPage = window.location.pathname.split('/').pop();
         const sidebarLinks = document.querySelectorAll('.dash-sidebar nav a');
         sidebarLinks.forEach(link => {
@@ -327,18 +364,25 @@ if (document.body.id === 'pagina-dashboard-gestor') {
     const avaliacao = document.querySelector('.kpi-card:nth-child(2) .kpi-value');
     const reciclado = document.querySelector('.kpi-card:nth-child(3) .kpi-value');
     
+    // funções: transfome pontos flutuantes em porcentagem, asigna nomes para a media de avaliações dos clientes
     function floatToPercent(value) { return (value * 100).toFixed(0) + '%'; }
     function avaliarMedia(value) { if (value < 0.5) return 'Ruim'; if (value < 0.7) return 'Regular'; return 'Bom'; }
     
+    // banco de dados artificial
     const dados = { eficienciaRotas: 0.97, avaliacoes: [0.85, 0.80, 0.76, 0.70, 0.82, 0.79, 0.75, 0.88, 0.77, 0.71], lixoTotal: 1029384.0, lixoReciclado: 555379.0 };
+    
+    // calcula total de lixo reciclado
     let totalLixoReciclado = dados.lixoReciclado / dados.lixoTotal;
+
+    // calcula a media de avaliações
     let avaliacaoMedia = dados.avaliacoes.reduce((a, b) => a + b, 0) / dados.avaliacoes.length;
     
+    // atualize o conteudo do site em acordo com os dados
     eficiencia.textContent = floatToPercent(dados.eficienciaRotas);
     avaliacao.textContent = avaliarMedia(avaliacaoMedia);
     reciclado.textContent = floatToPercent(totalLixoReciclado);
 
-    //NOVA LÓGICA DOS GRÁFICOS INTERATIVOS
+    //graficos interativos
     const kpiCards = document.querySelectorAll('.kpi-card');
     const chartContainers = document.querySelectorAll('.chart-container');
 
@@ -372,12 +416,20 @@ if (document.body.id === 'pagina-dashboard-gestor') {
 
 //Lógica da página de gerenciamento de rotas - gestor
     if (document.body.id === 'pagina-gerenciar-rotas') {
+
+        // pega form
         const form = document.getElementById('form-add-rota');
+
+        // inputs do form
         const cidadeInput = document.getElementById('rota-cidade');
         const bairroInput = document.getElementById('rota-bairro');
         const diasInput = document.getElementById('rota-dias');
         const horarioInput = document.getElementById('rota-horario');
+
+        // tabela
         const tabelaBody = document.getElementById('tabela-rotas-body');
+
+        //
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             const cidade = cidadeInput.value.trim();
