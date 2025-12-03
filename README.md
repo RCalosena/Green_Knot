@@ -1,31 +1,39 @@
 # Green Knot
- O Green Knot é um site que busca melhorar a comunicação entre gestores de lixo e cidadãos, além de atribuir ferramentas úteis como rotas otimizadas de caminhões para diminuir custos, mapas com as localizações de locais para jogar lixo, pilhas e óleo, central de reclamações, etc.
+Plataforma web para aproximar cidadãos de gestores de resíduos, oferecendo informações de coleta, canais de atendimento e apoio à operação logística de forma simples e otimizada para SEO.
 
- Plataforma completamente otimizada para o SEO
+## Principais funcionalidades
+- Rotas e horários de coleta com filtros por cidade/bairro (`src/rotas.html`).
+- Central de reclamações para acompanhamento de solicitações (`src/reclamacoes.html`).
+- Mapa e lista de locais de descarte (lixo, pilhas, óleo) (`src/locais.html`).
+- Área do gestor com painel, relatórios e gerenciamento de rotas (`src/gestor`).
+- Páginas de apoio: benefícios, saiba mais, ajuda e login/criação de conta (`src` e `src/login`).
 
-### Tecnologías utilizadas:
-HTML, CSS, JavaScript
+## Tecnologias
+HTML, CSS e JavaScript puro (site estático).
 
-### Estrutura do Projeto
-- O branch "main" contém a versão estável do projeto.
-- O branch "testar-pagina" é quase uma réplica do repositório "main", mas com o conteúdo da pasta /src na pasta original, e é lido pelo GitHub para gerar um site de teste para visualizar mudanças feitas no projeto.
-- "/assets" contém todos os elementos visuais do site (imagens, videos, etc.).
-- "/config" (nada)
-- "/database" (nada)
-- "/docs" contém documentos relacionados ao projeto que não formam parte do site.
-- "/scripts" (nada)
-- "/src" contém toda a programação fonte do site.
-- "/tests" contém protótipos, experimentos, e ideias para o site.
+## Estrutura do projeto
+- Branch `main`: versão estável.
+- Branch `testar-pagina`: espelha `main` com `/src` na raiz para GitHub Pages de testes.
+- `/assets1`: arquivos visuais usados pelas páginas.
+- `/config`, `/database`, `/scripts`: reservados para evolução futura.
+- `/docs`: documentação complementar do projeto.
+- `/src`: código-fonte principal do site.
+- `/tests`: protótipos, experimentos e ideias.
 
-### Protótipo: 
+## Como executar localmente
+1. Clone o repositório e entre na pasta `src`.
+2. Sirva os arquivos estáticos com qualquer servidor simples (ex.: `python -m http.server 5500`) ou use a extensão Live Server do VS Code.
+3. Abra `http://localhost:5500/index.html` no navegador para navegar pelas páginas.
+
+## Protótipo de referência
 https://ecogest.my.canva.site/fazer-login
 
-### Equipe:
+## Equipe
 - Enzo Marchi Romera
 - Giovanni Nicolas Tapia Rodriguez
 - Gustavo Antoniazzi Gouvea Santos
 - Matheus Oliveira Leite Nogueira
-- Édi Cézar Neves Filho
+- Édi César Neves Filho
 
-### Status do projeto: 
+## Status
 Em desenvolvimento
