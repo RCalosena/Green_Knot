@@ -440,27 +440,45 @@ if (document.body.id === 'pagina-dashboard-gestor') {
                 alert('Por favor, preencha todos os campos para adicionar a rota.');
                 return;
             }
+
+            // adiciona as informações na tabela
             const novaLinha = document.createElement('tr');
             novaLinha.innerHTML = `<td>${cidade}</td><td>${bairro}</td><td>${dias}</td><td>${horario}</td><td><button class="btn-tabela btn-editar">Editar</button> <button class="btn-tabela btn-excluir">Excluir</button></td>`;
             tabelaBody.appendChild(novaLinha);
+            
+            // limpa os dados do form
             form.reset();
         });
 
-        // permite excluir da tabela
+        // permite excluir itens da tabela
         tabelaBody.addEventListener('click', (event) => {
+            // se o click aconteceu no botão de excluir
             if (event.target.matches('.btn-excluir')) {
+                // pega a linha 'tr' (table row) mais proxima ao botão
                 const linhaParaExcluir = event.target.closest('tr');
+
+                // confirmação para evitar apagar sem querer
                 if (confirm('Você tem certeza que deseja excluir esta rota?')) {
+
+                    // remove a linha mais proxima
                     linhaParaExcluir.remove();
                     alert('Rota excluída com sucesso.');
                 }
             }
         // permite editar a tabela
             if (event.target.matches('.btn-editar')) {
+
+                // pega a linha mais proxima ao botao de editar
                 const linhaParaEditar = event.target.closest('tr');
+
+                // pega a celula de horario da linha e seu conteudo de texto
                 const celulaHorario = linhaParaEditar.children[3];
                 const horarioAtual = celulaHorario.textContent;
+
+                // comunique para digitar o novo horario para a rota
                 const novoHorario = prompt('Digite o novo horário para esta rota:', horarioAtual);
+
+                // se o novo horario sem espaços não esta vazio, mude o texto da celula para mostrar o novo horario
                 if (novoHorario && novoHorario.trim() !== '') {
                     celulaHorario.textContent = novoHorario.trim();
                     alert('Horário atualizado com sucesso!');
@@ -471,26 +489,46 @@ if (document.body.id === 'pagina-dashboard-gestor') {
 
 //Lógica da formação de relatórios - Gestor
     if (document.body.id === 'pagina-relatorios-gestor') {
+
+        // pega form
         const form = document.getElementById('form-gerar-relatorio');
+
+        // inputs
         const tipoRelatorioInput = document.getElementById('tipo-relatorio');
         const periodoInput = document.getElementById('periodo-relatorio');
+
+        // tabela de relatorios
         const tabelaBody = document.getElementById('tabela-relatorios-body');
+
+        // on submit...
         form.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            // pega o tipo de relatorio em base ao item selecionado pelo usuario
             const tipoRelatorio = tipoRelatorioInput.options[tipoRelatorioInput.selectedIndex].text;
             const periodo = periodoInput.value;
+
+            // se nada for selecionado, volta e avisa o usuario
             if (!tipoRelatorio || tipoRelatorio === 'Selecione' || !periodo) {
                 alert('Por favor, selecione o tipo de relatório e o período.');
                 return;
             }
+            // se foi selecionado um tipo de relatorio, avisa o usuario que o relatorio esta sendo gerado
             alert(`Gerando relatório de "${tipoRelatorio}" para o período de ${periodo}...`);
+
+            // pega o horario atual em pt-BR
             const hoje = new Date();
             const dataFormatada = hoje.toLocaleDateString('pt-BR');
+            // pega o periodo e formata
             const [ano, mes] = periodo.split('-');
             const nomeMes = new Date(ano, mes - 1, 1).toLocaleString('pt-BR', { month: 'long' });
             const periodoFormatado = `${nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1)}/${ano}`;
+            
+            // cria um novo elemento na tabela de relatorios com o relatorio gerado
             const novaLinha = document.createElement('tr');
             novaLinha.innerHTML = `<td>${dataFormatada}</td><td>${tipoRelatorio}</td><td>${periodoFormatado}</td><td><button class="btn-tabela btn-editar">Baixar Novamente</button></td>`;
+            
+            // coloca no topo da tabela e reseteia o form
             tabelaBody.prepend(novaLinha);
             form.reset();
         });
@@ -507,7 +545,7 @@ if (document.body.id === 'pagina-dashboard-gestor') {
 
         // Função Principal para Aplicar os Filtros 
         function aplicarFiltros() {
-            // Pega o TEXTO da opção selecionada (ex: "Pendente", "Jundiaí", "Todos")
+            // Pega o texto da opção selecionada (ex: "Pendente", "Jundiaí", "Todos")
             const statusSelecionado = filtroStatus.options[filtroStatus.selectedIndex].text;
             const cidadeSelecionada = filtroCidade.options[filtroCidade.selectedIndex].text;
 
