@@ -113,38 +113,58 @@ if (document.body.id === 'pagina-rotas') {
             clearInterval(liveUpdateInterval);
         }
 
-        // se a cidade foi selecionada e o bairro existe na cidade
+        // se a cidade foi selecionada e existem bairros na cidade
         if (cidadeSelecionada && bairrosPorCidade[cidadeSelecionada]) {
+            // habilita a interação com o bloco de bairros
             bairroSelect.disabled = false;
             bairrosPorCidade[cidadeSelecionada].forEach(bairro => { const option = new Option(bairro, bairro.toLowerCase().replace(/\s/g, '-')); bairroSelect.appendChild(option); });
         } else {
+            // deshabilita a interação com o bloco de bairros
             bairroSelect.disabled = true;
         }
     });
 
+    // ao fazer submit do form de rotas
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        
+        // pega bairro selecionado e limpa resultado e rastreamento
         const bairroSelecionado = bairroSelect.value;
         resultadoContainer.innerHTML = '';
         rastreamentoContainer.innerHTML = ''; 
 
+        // se o intervalo de rastreamento não eh null, limpa
         if (liveUpdateInterval) {
             clearInterval(liveUpdateInterval);
         }
 
+        // se o bairro foi selecionado e existem rotas
         if (bairroSelecionado && rotasInfo[bairroSelecionado]) {
+
+            // pega rota
             const rota = rotasInfo[bairroSelecionado];
+
+            // crie um texto html com uma mensagem mostrando o resultado
             const resultadoHTML = `<div class="resultado-card"><h3>Resultado para: ${bairroSelect.options[bairroSelect.selectedIndex].text}</h3><ul><li><strong>Dias da Coleta:</strong> ${rota.dias}</li><li><strong>Horário:</strong> ${rota.horario}</li><li><strong>Tipo de Coleta:</strong> ${rota.tipo}</li></ul></div>`;
             resultadoContainer.innerHTML = resultadoHTML;
+            
+            // crie outro html mostrando o status do caminhao
             const rastreamentoHTML = `<div class="rastreamento-card"><h3>Status em Tempo Real</h3><p id="status-caminhao-texto">Buscando localização...</p></div>`;
             rastreamentoContainer.innerHTML = rastreamentoHTML;
 
+            // zera o index de localização
             localizacaoIndex = 0; 
+
+            // pega a localização atual do bairro selecionado
             buscarLocalizacaoAtual(bairroSelecionado); 
+
+            // atualize o tracker em base ao resultado de buscarlocalização
             liveUpdateInterval = setInterval(() => buscarLocalizacaoAtual(bairroSelecionado), 5000); 
 
+        // se tem bairro mas não tem rotas...
         } else if (bairroSelecionado) {
             resultadoContainer.innerHTML = `<div class="resultado-card--erro"><p>Desculpe, ainda não temos informações detalhadas para este bairro.</p></div>`;
+        // se não tem bairro nem rotas
         } else {
             alert('Por favor, selecione um bairro para consultar.');
         }
@@ -152,19 +172,32 @@ if (document.body.id === 'pagina-rotas') {
 }
 //Lógica da página de login
     if (document.body.id === 'pagina-login-usuario') {
+
+        // pega o form geral
         const loginForm = document.querySelector('.login-card form');
+
+        // pega os inputs do form
         const emailInput = document.getElementById('email');
         const senhaInput = document.getElementById('senha');
+
+        // ao fazer submit...
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            // pega valores dos inputs sem espaços
             const email = emailInput.value.trim();
             const senha = senhaInput.value.trim();
+
+            // se campos preenchidos
             if (email && senha) {
+                // crie token e salva no localstorage
                 const tokenFalso = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hdGhldXMgVXN1w6FyaW8iLCJpYXQiOjE1MTYyMzkwMjJ9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
                 localStorage.setItem('user_token', tokenFalso);
+                // avisa o usuario e redireciona para a pag principal
                 alert('Login realizado com sucesso! Redirecionando para a página inicial.');
                 window.location.href = '../index.html';
             } else {
+                // avisa usuario para prencher os campos se algum estiver vazio
                 alert('Por favor, preencha os campos de e-mail e senha.');
             }
         });
@@ -172,15 +205,24 @@ if (document.body.id === 'pagina-rotas') {
 
 //Lógica da página de login do gestor
     if (document.body.id === 'pagina-login-gestor') {
-        const total = 50;
+
+        // limite de caracteres
+        const totalchar = 50;
+
+        // função debounce para evitar acumulação grande de letras no campo
         const debounce = (fn, delay = 200) => { let id; return (...args) => { clearTimeout(id); id = setTimeout(() => fn(...args), delay); }; };
+        
+        // pega form
         const loginForm = document.querySelector('.login-card form');
+
+        // pega inputs
         const cnpjInput = document.getElementById('cnpj');
         const emailInput = document.getElementById('email-gestor');
         const senhaInput = document.getElementById('senha-gestor');
+        
         [cnpjInput, emailInput, senhaInput].forEach(input => {
             input.addEventListener("input", debounce((e) => {
-                if (e.target.value.length > total) { e.target.value = e.target.value.slice(0, total); }
+                if (e.target.value.length > totalchar) { e.target.value = e.target.value.slice(0, totalchar); }
             }, 150));
         });
         loginForm.addEventListener('submit', (event) => {
